@@ -7,6 +7,8 @@ import os
 from app import app
 from apps import denue, egresos
 from navbar import Navbar
+server = app.server
+server.secret_key = os.environ.get('secret_key', 'secret')
 nav = Navbar()
 app.layout = html.Div([
     nav,
