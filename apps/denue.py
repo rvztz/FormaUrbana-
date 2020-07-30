@@ -9,9 +9,9 @@ import plotly.graph_objects as go
 import json
 from app import app
 
-df_censo = pd.read_csv('~/Documents/Workspace/EUrb/CensoMTY2000_10_16CBD.csv')
-df_concen = pd.read_csv("~/Documents/WorkSpace/EUrb/GradientesPop_Jobs.csv")
-df_denue = pd.read_csv('~/Documents/WorkSpace/EUrb/DENUEMTYCBD_2010_15_19.csv')
+df_censo = pd.read_csv('./Data/censo.csv')
+df_concen = pd.read_csv("./Data/gradiente.csv")
+df_denue = pd.read_csv('./Data/denue.csv')
 available_denue = ['comercio','industria', 'oficina', 'servicios'] 
 radio = json.load(open('/Users/RogerVazquezT/Documents/WorkSpace/EUrb/MapaGradientes.json'))
 

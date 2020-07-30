@@ -8,7 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from app import app
 
-df_ie = pd.read_csv('/Users/RogerVazquezT/Documents/WorkSpace/EUrb/ingeg.csv')
+df_ie = pd.read_csv('./Data/ingeg.csv')
 municipios = ['Abasolo', 'Apodaca', 'Cadereyta', 'El Carmen',
        'Ciénega de Flores', 'García', 'San Pedro', 'General Escobedo',
        'General Zuazua', 'Guadalupe', 'Juárez', 'Monterrey', 'Pesquería',
