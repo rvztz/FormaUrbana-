@@ -7,7 +7,6 @@ import os
 from app import app
 from apps import denue, egresos
 from navbar import Navbar
-server = app.server
 nav = Navbar()
 app.layout = html.Div([
     nav,
