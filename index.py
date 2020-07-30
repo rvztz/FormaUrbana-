@@ -9,9 +9,8 @@ from apps import denue, egresos
 from navbar import Navbar
 server = app.server
 server.secret_key = os.environ.get('secret_key', 'secret')
-nav = Navbar()
+#nav = Navbar()
 app.layout = html.Div([
-    nav,
     dcc.Location(id = 'url', refresh = False),
     html.Div(id='page-content')
 ])
