@@ -13,7 +13,7 @@ df_censo = pd.read_csv('./data/censo.csv')
 df_concen = pd.read_csv("./data/gradiente.csv")
 df_denue = pd.read_csv('./data/denue.csv')
 available_denue = ['comercio','industria', 'oficina', 'servicios'] 
-radio = json.load(open('/Users/RogerVazquezT/Documents/WorkSpace/EUrb/MapaGradientes.json'))
+radio = json.load(open('./data/MapaGradientes.json'))
 
 
 empleos_content = { 
