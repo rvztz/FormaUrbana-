@@ -270,7 +270,3 @@ def switch_maptab(at):
 def select_figure(selected_year):
     return get_denue(selected_year), empleos_content[selected_year+'_1'], empleos_content[selected_year+'_2']
 
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
