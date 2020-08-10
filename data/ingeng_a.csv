@@ -1,0 +1,101 @@
+,Municipio,Año,Ingresos,Monto ingresos,Porcentaje ingresos,Egresos,Monto egresos,Porcentaje egresos,Concepto,Total
+6,Apodaca,1990,Deuda,665000,3.90%,Deuda,189252,1.11%,,
+4,Apodaca,1990,Propios,6028705,35.37%,Gasto corriente,5704863,33.47%,Ingresos,17044650
+5,Apodaca,1990,Transferencias Federales,10350945,60.73%,Inversión,9145609,53.66%,Egresos,17044650
+7,Apodaca,1990,,,,Otros,2004926,11.76%,,
+74,Apodaca,2000,Deuda,4750000,1.78%,Deuda,7638177,2.86%,,
+72,Apodaca,2000,Propios,122425276,45.90%,Gasto corriente,126207647,47.32%,Ingresos,266733474
+73,Apodaca,2000,Transferencias Federales,139558198,52.32%,Inversión,121975550,45.73%,Egresos,266733474
+75,Apodaca,2000,,,,Otros,10912100,4.09%,,
+142,Apodaca,2010,Deuda,196181518,19.23%,Deuda,56956178,5.58%,,
+140,Apodaca,2010,Propios,295859710,29.00%,Gasto corriente,402775974,39.48%,Ingresos,1020124569
+141,Apodaca,2010,Transferencias Federales,528083341,51.77%,Inversión,546745654,53.60%,Egresos,1020124569
+143,Apodaca,2010,,,,Otros,13646763,1.34%,,
+210,Apodaca,2015,Deuda,390736549,24.98%,Deuda,192492419,10.30%,,
+208,Apodaca,2015,Propios,173697334,11.10%,Gasto corriente,1091786573,58.44%,Ingresos,1564504356
+209,Apodaca,2015,Transferencias Federales,1000070473,63.92%,Inversión,527446901,28.23%,Egresos,1868200754
+211,Apodaca,2015,,,,Otros,56474861,3.02%,,
+278,Apodaca,2018,Deuda,26782076,1.33%,Deuda,8746728,0.43%,,
+276,Apodaca,2018,Propios,871012876,43.25%,Gasto corriente,1308518216,64.98%,Ingresos,2013735373
+277,Apodaca,2018,Transferencias Federales,1115940421,55.42%,Inversión,605639062,30.08%,Egresos,2013735373
+279,Apodaca,2018,,,,Otros,90831367,4.51%,,
+38,Guadalupe,1990,Deuda,0,0.00%,Deuda,1271595,2.37%,,
+36,Guadalupe,1990,Propios,26367442,49.09%,Gasto corriente,39138978,72.87%,Ingresos,53713504
+37,Guadalupe,1990,Transferencias Federales,27346062,50.91%,Inversión,11096110,20.66%,Egresos,53713504
+39,Guadalupe,1990,,,,Otros,2206821,4.11%,,
+106,Guadalupe,2000,Deuda,15794090,2.56%,Deuda,25403653,4.12%,,
+104,Guadalupe,2000,Propios,232463419,37.66%,Gasto corriente,379575666,61.49%,Ingresos,617318866
+105,Guadalupe,2000,Transferencias Federales,369061357,59.78%,Inversión,161828891,26.21%,Egresos,617318866
+107,Guadalupe,2000,,,,Otros,50510656,8.18%,,
+174,Guadalupe,2010,Deuda,170000000,11.59%,Deuda,47642374,3.25%,,
+172,Guadalupe,2010,Propios,326595330,22.26%,Gasto corriente,1002784222,68.34%,Ingresos,1467403847
+173,Guadalupe,2010,Transferencias Federales,970808517,66.16%,Inversión,318032052,21.67%,Egresos,1467403847
+175,Guadalupe,2010,,,,Otros,98945199,6.74%,,
+242,Guadalupe,2015,Deuda,60000000,3.31%,Deuda,65118835,3.59%,,
+240,Guadalupe,2015,Propios,468869005,25.86%,Gasto corriente,1284314192,70.85%,Ingresos,1812820278
+241,Guadalupe,2015,Transferencias Federales,1283951273,70.83%,Inversión,394856660,21.78%,Egresos,1812820278
+243,Guadalupe,2015,,,,Otros,68530591,3.78%,,
+310,Guadalupe,2018,Deuda,75184782,2.97%,Deuda,118481063,4.68%,,
+308,Guadalupe,2018,Propios,653250941,25.78%,Gasto corriente,1708814225,67.44%,Ingresos,2533814491
+309,Guadalupe,2018,Transferencias Federales,1805378768,71.25%,Inversión,654962333,25.85%,Egresos,2533814491
+311,Guadalupe,2018,,,,Otros,51556870,2.03%,,
+46,Monterrey,1990,Deuda,0,0.00%,Deuda,937910,0.57%,,
+44,Monterrey,1990,Propios,63355027,38.79%,Gasto corriente,107139244,65.60%,Ingresos,163309825
+45,Monterrey,1990,Transferencias Federales,99954798,61.21%,Inversión,51570354,31.58%,Egresos,163309825
+47,Monterrey,1990,,,,Otros,3662317,2.24%,,
+114,Monterrey,2000,Deuda,90200000,5.27%,Deuda,54719000,3.20%,,
+112,Monterrey,2000,Propios,776403000,45.33%,Gasto corriente,1016050000,59.33%,Ingresos,1712623000
+113,Monterrey,2000,Transferencias Federales,846020000,49.40%,Inversión,509612000,29.76%,Egresos,1712623000
+115,Monterrey,2000,,,,Otros,132242000,7.72%,,
+182,Monterrey,2010,Deuda,211308787,5.69%,Deuda,203673105,5.48%,,
+180,Monterrey,2010,Propios,1275334272,34.33%,Gasto corriente,2440607339,65.69%,Ingresos,3715344582
+181,Monterrey,2010,Transferencias Federales,2228701523,59.99%,Inversión,964623598,25.96%,Egresos,3715344582
+183,Monterrey,2010,,,,Otros,106440540,2.86%,,
+250,Monterrey,2015,Deuda,285354472,5.87%,Deuda,359671607,7.40%,,
+248,Monterrey,2015,Propios,1878659371,38.67%,Gasto corriente,3233613770,66.56%,Ingresos,4858265474
+249,Monterrey,2015,Transferencias Federales,2694251631,55.46%,Inversión,1222622020,25.17%,Egresos,4858265474
+251,Monterrey,2015,,,,Otros,42358077,0.87%,,
+318,Monterrey,2018,Deuda,35600000,0.56%,Deuda,252803376,3.96%,,
+316,Monterrey,2018,Propios,2886395879,45.18%,Gasto corriente,3884712179,60.81%,Ingresos,6388382320
+317,Monterrey,2018,Transferencias Federales,3466386441,54.26%,Inversión,1757442917,27.51%,Egresos,6388382320
+319,Monterrey,2018,,,,Otros,493423848,7.72%,,
+58,San Nicolás,1990,Deuda,0,0.00%,Deuda,9006,0.02%,,
+56,San Nicolás,1990,Propios,22353997,42.41%,Gasto corriente,34645992,65.72%,Ingresos,52714461
+57,San Nicolás,1990,Transferencias Federales,30360464,57.59%,Inversión,10859561,20.60%,Egresos,52714461
+59,San Nicolás,1990,,,,Otros,7199902,13.66%,,
+126,San Nicolás,2000,Deuda,52807000,9.70%,Deuda,21945000,4.03%,,
+124,San Nicolás,2000,Propios,185788000,34.13%,Gasto corriente,327189000,60.10%,Ingresos,544422000
+125,San Nicolás,2000,Transferencias Federales,305827000,56.17%,Inversión,73027000,13.41%,Egresos,544422000
+127,San Nicolás,2000,,,,Otros,122261000,22.46%,,
+194,San Nicolás,2010,Deuda,342446000,21.04%,Deuda,315574239,19.39%,,
+192,San Nicolás,2010,Propios,345290880,21.22%,Gasto corriente,738592670,45.39%,Ingresos,1627341492
+193,San Nicolás,2010,Transferencias Federales,939604612,57.74%,Inversión,423598120,26.03%,Egresos,1627341492
+195,San Nicolás,2010,,,,Otros,149576463,9.19%,,
+262,San Nicolás,2015,Deuda,0,0.00%,Deuda,135267936,7.61%,,
+260,San Nicolás,2015,Propios,454170836,25.54%,Gasto corriente,812809136,45.71%,Ingresos,1778254629
+261,San Nicolás,2015,Transferencias Federales,1324083793,74.46%,Inversión,329127000,18.51%,Egresos,1778254629
+263,San Nicolás,2015,,,,Otros,501050557,28.18%,,
+330,San Nicolás,2018,Deuda,204215643,9.28%,Deuda,125902286,5.72%,,
+328,San Nicolás,2018,Propios,637846673,28.99%,Gasto corriente,1136730994,51.67%,Ingresos,2200174028
+329,San Nicolás,2018,Transferencias Federales,1358111712,61.73%,Inversión,500710289,22.76%,Egresos,2200174028
+331,San Nicolás,2018,,,,Otros,436830459,19.85%,,
+26,San Pedro,1990,Deuda,0,0.00%,Deuda,1500000,2.13%,,
+24,San Pedro,1990,Propios,41444176,58.77%,Gasto corriente,35088204,49.76%,Ingresos,70513585
+25,San Pedro,1990,Transferencias Federales,29069409,41.23%,Inversión,22028916,31.24%,Egresos,70513585
+27,San Pedro,1990,,,,Otros,11896465,16.87%,,
+94,San Pedro,2000,Deuda,0,0.00%,Deuda,7442997,1.40%,,
+92,San Pedro,2000,Propios,369855135,69.79%,Gasto corriente,278505911,52.55%,Ingresos,529955268
+93,San Pedro,2000,Transferencias Federales,160100133,30.21%,Inversión,95842527,18.09%,Egresos,529955268
+95,San Pedro,2000,,,,Otros,148163833,27.96%,,
+162,San Pedro,2010,Deuda,10000000,0.99%,Deuda,39110105,3.87%,,
+160,San Pedro,2010,Propios,554958189,54.95%,Gasto corriente,728886058,72.17%,Ingresos,1010022819
+161,San Pedro,2010,Transferencias Federales,445064630,44.06%,Inversión,151121470,14.96%,Egresos,1010022819
+163,San Pedro,2010,,,,Otros,90905186,9.00%,,
+230,San Pedro,2015,Deuda,75783908,3.45%,Deuda,198056729,9.02%,,
+228,San Pedro,2015,Propios,1317739952,60.03%,Gasto corriente,1250072356,56.95%,Ingresos,2195039699
+229,San Pedro,2015,Transferencias Federales,801515839,36.51%,Inversión,377203378,17.18%,Egresos,2195039699
+231,San Pedro,2015,,,,Otros,369707236,16.84%,,
+298,San Pedro,2018,Deuda,154951911,5.08%,Deuda,242750184,7.96%,,
+296,San Pedro,2018,Propios,1583356450,51.90%,Gasto corriente,1720563309,56.40%,Ingresos,3050902207
+297,San Pedro,2018,Transferencias Federales,1312593846,43.02%,Inversión,868213978,28.46%,Egresos,3050902207
+299,San Pedro,2018,,,,Otros,219374736,7.19%,,

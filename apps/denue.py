@@ -25,7 +25,15 @@ empleos_content = {
     '2019_2' : 'En el aspecto global del área metropolitana, los empleos totales incrementaron por el 14%, siendo los empleos de oficina el sector con mayor crecimiento, del 20.7% respecto a 2015. La industria y el comercio tuvieron un crecimiento cercano, del 19.7% y 19.6% respectivamente. Sin embargo, el comercio sigue siendo la principal fuente de empleo del área metropolitana, representando el 36% de los empleos totales. La industria representó el 23% y los empleos de oficina y servicios representaron el 15% y 10% respectivamente.'
 }
 
-
+maps_titles = {
+    'Pop0_16' : 'Diferencia de población 2000 - 2016',
+    'Emp10_19' : 'Diferencia de empleos 2010 - 2019',
+    'CUS': 'Coeficiente de uso de suelo', 
+    'AreaC':'Metros cuadrados de área construida',
+    'PPJov2000':'Población joven 2000',
+    'PPJov2016':'Población joven 2016',
+    'CambioPP':'Diferencia de población joven 2000 - 2016'
+}
 
 def get_denue(year='2019'):
     if year==None:
@@ -39,7 +47,8 @@ def get_denue(year='2019'):
 
     fig_denue.update_layout(
     xaxis_title="Distancia a centro de la ciudad",
-    yaxis_title="Número de trabajos"
+    yaxis_title="Número de trabajos",
+    template= 'plotly_dark'
     )
 
     return fig_denue
@@ -50,21 +59,23 @@ def get_censo():
     fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2000')['dist_cbd'], y=df_censo.query('year==2000')['viv_cm'],
                     mode='lines',
                     name='Vivienda 2000'))
+
     fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2000')['dist_cbd'], y=df_censo.query('year==2000')['pop_cm'],
                     mode='lines',
                     name='Población 2000'))
-    
 
     fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2016')['dist_cbd'], y=df_censo.query('year==2016')['viv_cm'],
                     mode='lines',
                     name='Vivienda 2016'))
+
     fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2016')['dist_cbd'], y=df_censo.query('year==2016')['pop_cm'],
                     mode='lines',
                     name='Población 2016'))
 
     fig_censo.update_layout(
         xaxis_title="Distancia a centro de la ciudad",
-        yaxis_title="Número de personas"
+        yaxis_title="Número de personas",
+        template = 'plotly_dark'
     )
 
     return fig_censo
@@ -72,8 +83,8 @@ def get_censo():
 def get_mapa(row="dist_cbd"):
     if row==None:
         row = "dist_cbd"
-    distance = px.choropleth_mapbox(df_concen, geojson = radio, color = row, locations = "dist_cbd", featureidkey= "properties.distance", center = {"lat": 25.668289, "lon": -100.310015}, mapbox_style='carto-positron', zoom=8.5)
-    distance.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    distance = px.choropleth_mapbox(df_concen, geojson = radio, color = row,locations = "dist_cbd",color_continuous_scale='Magma' ,featureidkey= "properties.distance", center = {"lat": 25.668289, "lon": -100.310015}, mapbox_style='carto-darkmatter', zoom=8.5, height=550, labels = {'dist_cbd': 'Distancia', 'Emp10_19' : 'Empleo', 'Pop0_16': 'Población'})
+    distance.update_layout(margin={"r":0,"t":0,"l":0,"b":0}, template = 'plotly_dark')
     return distance
 
 
@@ -85,18 +96,72 @@ denue_options = dcc.Dropdown(
     ],
     id = "denue-options",
     value='2019',
-    clearable=False
+    clearable=False,
+    style = {
+        'backgroundColor': '#121212',
+        'color' : '#111111'
+    }
 )  
+
+pob_options= dcc.Dropdown(
+    options=[
+        {'label': 'Diferencia de población', 'value': 'Pop0_16'},
+        {'label': 'Diferencia de empleo', 'value': 'Emp10_19'},
+    ],
+    id = "pob-options",
+    value='Pop0_16',
+    clearable=False,
+    style = {
+        'backgroundColor': '#121212',
+        'color' : '#111111'
+    }
+)  
+
+suelo_options= dcc.Dropdown(
+    options=[
+        {'label': 'Coef. uso de suelo', 'value': 'CUS'},
+        {'label': 'Área construida', 'value': 'AreaC'},
+    ],
+    id = "suelo-options",
+    value='CUS',
+    clearable=False,
+    style = {
+        'backgroundColor': '#121212',
+        'color' : '#111111'
+    }
+)  
+
+jov_options = dcc.Dropdown(
+    options=[
+        {'label': 'Población joven 2000', 'value': 'PPJov2000'},
+        {'label': 'Población joven 2016', 'value': 'PPJov2016'},
+        {'label': 'Cambio de población joven', 'value': 'CambioPP'}
+
+    ],
+    id = "jov-options",
+    value='PPJov2000',
+    clearable=False,
+    style = {
+        'backgroundColor': '#121212',
+        'color' : '#111111'
+    }
+)  
+
 
 tab_denue = dbc.Card(
     dbc.CardBody(
         children = [
             html.H4("Actividades Económicas", className = "card-title"),
-            html.Hr(), 
             denue_options,
+            html.Br(),
             dcc.Graph(
-                id = "grafica_denue"
+                figure = get_denue(),
+                id = "grafica_denue",
+                config = {
+                    'displayModeBar' : False
+                }
             ),
+            html.Br(),
             html.P(children = empleos_content['2019_1']
             ,className = "card-text", style = {'text-align': 'justify'}, id = 'p_act1'),
             html.P(children = empleos_content['2019_2']
@@ -119,24 +184,11 @@ tab_censo = dbc.Card(
             html.P("Este cambio de zonas de habitación significa mayores distancias de traslado al centro de empleos consolidado históricamente. Sin embargo, también suponen nuevas fuentes de empleo en servicios y comercios para satisfacer las necesidades de los nuevos habitantes."
             ,className = "card-text", style = {'text-align': 'justify'}),
             dcc.Graph(
-                figure = get_censo()
+                figure = get_censo(),
+                config = {
+                    'displayModeBar' : False
+                }
             )
-        ],
-        className = "mt-3"
-    )   
-)
-
-
-
-tab_about = dbc.Card(
-    dbc.CardBody(
-        children = [
-            html.H4("Sobre la forma urbana", className = "card-title"),
-            html.Hr(), 
-            html.P("Phasellus id sem eu tortor mollis pharetra. Curabitur eleifend sapien sed fringilla auctor. Curabitur commodo vitae est non auctor. Quisque in iaculis dolor. Cras ut leo at ex fermentum facilisis id at quam. Nullam varius mi scelerisque, rhoncus lectus quis, efficitur dui. Duis vitae sapien sed leo euismod aliquam. Praesent luctus euismod odio, non convallis leo consequat ut. Praesent rhoncus lorem in felis luctus euismod. Donec eu mauris gravida, dignissim ante a, sollicitudin felis. Pellentesque interdum vitae nisi ac auctor. Mauris hendrerit viverra tempor. Etiam fringilla tincidunt aliquam. Proin sit amet odio quam. Morbi quis massa rutrum, pellentesque dui vitae, vulputate nunc. Proin facilisis nulla a pretium condimentum. ",className = "card-text"),
-            html.P("In vel fringilla arcu. In imperdiet nisi rhoncus odio tincidunt, sit amet congue nisl bibendum. Mauris et justo ligula. Ut eget pretium augue. Curabitur porttitor orci in metus tincidunt cursus. Nam et massa volutpat, bibendum ipsum id, sodales diam. Integer faucibus quam et libero aliquam eleifend. Cras pulvinar fermentum semper. Fusce vitae efficitur leo, eget faucibus erat. Nullam tristique fermentum vehicula. Sed iaculis, felis dapibus tempor dapibus, eros nulla tincidunt elit, non egestas magna justo in ipsum. Aenean at sagittis nibh, sit amet iaculis lacus. Duis ut vestibulum elit, sed posuere erat. Etiam et vestibulum enim. Aenean consequat nisi id finibus lobortis. Praesent et nulla eu sem porttitor pulvinar.", className = "card-text"),
-            html.P("Duis facilisis, lorem vitae mattis iaculis, purus purus scelerisque est, ac gravida orci nisl eget enim. Phasellus nulla arcu, mattis id tristique vel, fermentum non metus. Integer tristique tellus eget porta ultricies. Duis porta nisi eu eleifend accumsan. Nunc eget quam ut ipsum ultricies aliquam nec quis risus. Fusce egestas orci congue elit maximus bibendum. Nunc accumsan molestie mauris, eget suscipit dui tincidunt ac. Cras id ipsum ac metus lacinia euismod at a leo. Sed lacus erat, finibus aliquam enim sit amet, posuere faucibus orci. Vivamus pharetra finibus ligula, ac feugiat velit feugiat nec. Nullam enim justo, eleifend ac consectetur id, fermentum a ex. Aenean congue tempor odio, sit amet dictum purus congue ut.", className = "card-text"),
-            html.P("Donec luctus id tellus nec feugiat. Morbi suscipit arcu a massa consequat sodales. Cras non sem ante. Praesent interdum lacus in metus condimentum, vitae pretium enim sagittis. Ut tellus enim, lobortis at justo tincidunt, posuere malesuada leo. Aenean quis tortor sed diam ultrices lobortis vel vitae erat. Nunc rhoncus molestie nulla ut cursus. Etiam vitae porttitor nulla. Etiam tempor cursus neque, sed rutrum enim tincidunt a. Vivamus felis enim, tristique eget eros eu, rhoncus mollis nibh. Aliquam non justo placerat tortor tempus dictum et nec urna.", className = "card-text")        
         ],
         className = "mt-3"
     )   
@@ -147,40 +199,77 @@ map_distancia = dbc.Card(
         children = [
             html.H4("Distancia al centro de la ciudad", className = "card-title"),
             dcc.Graph(
-                figure = get_mapa('dist_cbd')
+                figure = get_mapa('dist_cbd'),
+                config = {
+                    'displayModeBar' : False
+                }
             )
         ],
+        className = "mt-3"
     )   
 )
 
-map_empleo = dbc.Card(
-    dbc.CardBody(
-        children = [
-            html.H4("Diferencia de empleos 2010-2019", className = "card-title"),
-            dcc.Graph(
-                figure = get_mapa('Emp10_19')
-            ),
-        ],
-    )   
-)
 map_poblacion = dbc.Card(
     dbc.CardBody(
         children = [
-            html.H4("Diferencia de población 2000-2016", className = "card-title"),
+            html.H4(children=maps_titles['Pop0_16'], className = "card-title", id='titulopob'),
+            pob_options,
             dcc.Graph(
-                figure = get_mapa('Pop0_16')
+                id = 'map_pobemp',
+                figure = get_mapa('Pop0_16'),
+                config = {
+                    'displayModeBar' : False
+                }
             )
-        ]
+        ],
+        className = "mt-3"
     )   
 )
+
+map_cus = dbc.Card(
+    dbc.CardBody(
+        children = [
+            html.H4(children=maps_titles['CUS'], className = "card-title", id ='titulo_suelo'),
+            suelo_options,
+            dcc.Graph(
+                id = 'map_uso',
+                figure = get_mapa('CUS'),
+                config = {
+                    'displayModeBar' : False
+                }
+            )
+        ],
+        className = "mt-3"
+    )   
+)
+
+
+map_joven = dbc.Card(
+    dbc.CardBody(
+        children = [
+            html.H4(children=maps_titles['PPJov2000'], className = "card-title", id='titulo_joven'),
+            jov_options,
+            dcc.Graph(
+                id = 'map_joven',
+                figure = get_mapa('PPJov2000'),
+                config = {
+                    'displayModeBar' : False
+                }
+            )
+        ],
+        className = "mt-3"
+    )   
+)
+
 
 map_tabs = html.Div(
     [
         dbc.Tabs(
             [
-                dbc.Tab(label="Distancia al centro", tab_id="maptab-1"),
-                dbc.Tab(label="Diferencia empleo", tab_id="maptab-2"),
-                dbc.Tab(label="Diferencia poblacion", tab_id="maptab-3")
+                dbc.Tab(label="Dist. centro", tab_id="maptab-1"),
+                dbc.Tab(label="Población/empleo", tab_id="maptab-2"),
+                dbc.Tab(label="Uso suelo", tab_id="maptab-3"),
+                dbc.Tab(label="Población joven", tab_id="maptab-4")
 
             ],
             id="maptabs",
@@ -195,8 +284,7 @@ tabs = html.Div(
         dbc.Tabs(
             [
                 dbc.Tab(label="Act. Economicas", tab_id="tab-1"),
-                dbc.Tab(label="Población y vivienda", tab_id="tab-2"),
-                dbc.Tab(label="Forma urbana", tab_id="tab-3")
+                dbc.Tab(label="Población y vivienda", tab_id="tab-2")
 
             ],
             id="tabs",
@@ -205,11 +293,6 @@ tabs = html.Div(
         html.Div(id="content"),
     ]
 )
-
-
-
-
-
 
 layout = html.Div(
     children = [
@@ -222,19 +305,20 @@ layout = html.Div(
             html.H2(children ="Forma urbana de la Zona Metropolitana de Monterrey"),
             html.Hr()
             ]), 
-    
-  
-    
         dbc.Row(
             children = [
                 dbc.Col(
+                    lg = 6,
                     md = 6,
+                    sm = 12,
                     children = [
                         tabs
                     ]
                 ),
                 dbc.Col(
-                    md = 6,
+                    lg = 6,
+                    md = 6, 
+                    sm = 12, 
                     children = [
                         map_tabs
                     ]
@@ -246,14 +330,13 @@ layout = html.Div(
     
 
 ])
+
 @app.callback(Output("content", "children"), [Input("tabs", "active_tab")])
 def switch_tab(at):
     if at == "tab-1":
         return tab_denue
     elif at == "tab-2":
         return tab_censo
-    elif at == "tab-3":
-        return tab_about
     return html.P("Error al cargar!...")
 
 @app.callback(Output("mapcontent", "children"), [Input("maptabs", "active_tab")])
@@ -261,12 +344,25 @@ def switch_maptab(at):
     if at == "maptab-1":
         return map_distancia
     elif at == "maptab-2":
-        return map_empleo
-    elif at == "maptab-3":
         return map_poblacion
+    elif at == "maptab-3":
+        return map_cus
+    elif at == "maptab-4":
+        return map_joven
     return html.P("Error al cargar!...")
 
 @app.callback([Output("grafica_denue", "figure"), Output("p_act1", "children"), Output("p_act2", "children")], [Input("denue-options", "value")])
 def select_figure(selected_year):
     return get_denue(selected_year), empleos_content[selected_year+'_1'], empleos_content[selected_year+'_2']
 
+@app.callback([Output('map_pobemp','figure'), Output('titulopob', 'children')], [Input('pob-options','value')])
+def select_pob(selected_cat1):
+        return get_mapa(selected_cat1), maps_titles[selected_cat1]
+
+@app.callback([Output('map_uso','figure'), Output('titulo_suelo', 'children')], [Input('suelo-options','value')])
+def select_pob(selected_cat2):
+        return get_mapa(selected_cat2), maps_titles[selected_cat2]
+
+@app.callback([Output('map_joven','figure'), Output('titulo_joven', 'children')], [Input('jov-options','value')])
+def select_pob(selected_cat3):
+        return get_mapa(selected_cat3), maps_titles[selected_cat3]

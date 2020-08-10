@@ -8,28 +8,121 @@ import plotly.express as px
 import plotly.graph_objects as go
 from app import app
 
-df_ie = pd.read_csv('./data/ingeg.csv')
-municipios = ['Abasolo', 'Apodaca', 'Cadereyta', 'El Carmen',
-       'Ciénega de Flores', 'García', 'San Pedro', 'General Escobedo',
-       'General Zuazua', 'Guadalupe', 'Juárez', 'Monterrey', 'Pesquería',
-       'Salinas Victoria', 'San Nicolás', 'Santa Catarina', 'Santiago']
+df_a = pd.read_csv('./data/ingeng_a.csv')
+df_b = pd.read_csv('./data/ingeng_b.csv')
+
+municipios = {'Abasolo' :'b', 'Apodaca':'a', 'Cadereyta':'b', 'El Carmen':'b',
+       'Ciénega de Flores':'b', 'García':'b', 'San Pedro':'a', 'General Escobedo':'b',
+       'General Zuazua':'b', 'Guadalupe':'a', 'Juárez':'b', 'Monterrey':'a', 'Pesquería':'b',
+       'Salinas Victoria':'b', 'San Nicolás':'a', 'Santa Catarina':'b', 'Santiago':'b'}
 
 years = ['1990', '2000', '2010', '2015', '2018']
 
-ingresos_options = html.Div([
-    html.Div([
+def get_sunburst(year='2018',group = 'a'):
+    if group=='a':
+        df_temp = df_a.query('Año=='+year).dropna(subset=['Concepto', 'Total'])
+    else:
+        df_temp = df_b.query('Año=='+year).dropna(subset=['Concepto', 'Total'])
+
+    sunburst = px.sunburst(df_temp, path= ['Municipio', 'Concepto'], values = 'Total', color = 'Total' ,color_continuous_scale='magma',template='plotly_dark', height=700)
+    sunburst.data[0].textinfo = 'label+value'
+    return sunburst
+
+def get_treeingresos(year='2018',group = 'a'):
+    if group=='a':
+        df_temp = df_a.query('Año=='+year).dropna(subset=['Monto ingresos', 'Ingresos'])
+    else:
+        df_temp = df_b.query('Año=='+year).dropna(subset=['Monto ingresos', 'Ingresos'])
+
+    tringresos = px.treemap(df_temp, path=['Municipio', 'Ingresos'], values = 'Monto ingresos', color = 'Monto ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=700)
+    tringresos.data[0].textinfo = 'label+value+percent parent'
+    return tringresos
+    
+
+def get_treeegresos(year='2018',group = 'a'):
+    if group=='a':
+        df_temp = df_a.query('Año=='+year).dropna(subset=['Monto egresos', 'Egresos'])
+    else:
+        df_temp = df_b.query('Año=='+year).dropna(subset=['Monto egresos', 'Egresos'])
+
+    tregresos = px.treemap(df_temp, path=['Municipio', 'Egresos'], values = 'Monto egresos', color = 'Monto egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=700)
+    tregresos.data[0].textinfo = 'label+value+percent parent'
+    return tregresos
+
+def get_bars(year='2018', municipio='Monterrey',mode='i'):
+
+    if municipios[municipio]=='a':
+        df_temp = df_a.query('Año=='+year+'and Municipio=="'+municipio+'"')
+    else:
+        df_temp = df_b.query('Año=='+year+'and Municipio=="'+municipio+'"')
+
+    if mode=='i':
+        bars = px.bar(df_temp.dropna(subset=['Ingresos', 'Monto ingresos']), x = 'Ingresos', y = 'Monto ingresos', color = 'Ingresos',template='plotly_dark')
+    else:
+        bars = px.bar(df_temp.dropna(subset=['Egresos', 'Monto egresos']), x = 'Egresos', y = 'Monto egresos', color = 'Egresos',template='plotly_dark')
+        
+    bars.update_layout(showlegend=False)
+    return bars
+
+
+r_options = html.Div(children=[
+
+    html.Div(
         dcc.Dropdown(
             id = 'input-municipio',
             options=[
                 {'label': i, 'value': i }
-                for i in municipios
+                for i in municipios.keys()
             ],
             value = 'Monterrey',
-            clearable = False
-        )],
-        style = {'width': '48%', 'display': 'inline-block'}),
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ),
+    style={'width': '48%', 'display': 'inline-block'}
+        ),
 
-    html.Div([
+    html.Div(
+        dcc.Dropdown(
+            id = 'input-anno',
+            options=[
+                {'label': y, 'value': y}
+                for y in years
+            ],
+            value = '2018',
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ),
+        style={'width': '48%', 'float': 'right', 'display': 'inline-block'}
+        )
+        
+        ])
+
+main_options = html.Div(children=[
+
+        html.Div(
+        dcc.Dropdown(
+            id = 'input-grupo',
+            options=[
+                {'label': 'Grupo A', 'value':'a'},
+                {'label': 'Grupo B', 'value':'b'},   
+            ],
+            value = 'a',
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ), 
+        style={'width': '48%', 'display': 'inline-block'}
+        ),
+
+        html.Div(
         dcc.Dropdown(
             id = 'input-years',
             options=[
@@ -37,21 +130,134 @@ ingresos_options = html.Div([
                 for y in years
             ],
             value = '2018',
-            clearable = False
-        )],
-        style = {'width': '48%', 'display': 'inline-block'})])
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ),
+    style={'width': '48%', 'float': 'right', 'display': 'inline-block'}
+        )
+        
+])
 
-content_ingresos = html.Div(
+main_options2 = html.Div(children=[
+
+        html.Div(
+        dcc.Dropdown(
+            id = 'input-grupo2',
+            options=[
+                {'label': 'Grupo A', 'value':'a'},
+                {'label': 'Grupo B', 'value':'b'},   
+            ],
+            value = 'a',
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ), 
+        style={'width': '48%', 'display': 'inline-block'}
+        ),
+
+        html.Div(
+        dcc.Dropdown(
+            id = 'input-years2',
+            options=[
+                {'label': y, 'value': y}
+                for y in years
+            ],
+            value = '2018',
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ),
+    style={'width': '48%', 'float': 'right', 'display': 'inline-block'}
+        )
+        
+])
+
+
+main_options3 = html.Div(children=[
+
+        html.Div(
+        dcc.Dropdown(
+            id = 'input-grupo3',
+            options=[
+                {'label': 'Grupo A', 'value':'a'},
+                {'label': 'Grupo B', 'value':'b'},   
+            ],
+            value = 'a',
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ), 
+        style={'width': '48%', 'display': 'inline-block'}
+        ),
+
+        html.Div(
+        dcc.Dropdown(
+            id = 'input-years3',
+            options=[
+                {'label': y, 'value': y}
+                for y in years
+            ],
+            value = '2018',
+            clearable = False,
+            style = {
+                'backgroundColor': '#121212',
+                'color' : '#111111'
+            }
+        ),
+    style={'width': '48%', 'float': 'right', 'display': 'inline-block'}
+        )
+        
+])
+
+
+tab_relacion = html.Div(
     [
         dbc.Card(
             dbc.CardBody(
                 children = [
-                    html.H4("Ingresos económicos por municipio", className = "card-title"),
-                    html.Hr(),
-                    ingresos_options,
+                    html.H4("Distribución de ingresos/egresos", className = "card-title"),
+                    main_options,
                     dcc.Graph(
-                        id = "grafica_ingresos" 
+                        id = "grafica_relacion",
+                        figure = get_sunburst(),
+                        config = {
+                            'displayModeBar':False
+                        }
                     ),
+                    html.Br(),
+                    html.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu orci nisi. Nunc et ipsum ligula. Nunc mattis augue purus, efficitur dignissim mi finibus vehicula. In eleifend et tellus et dapibus. Donec ut varius nisl. Donec a libero dui. Proin id gravida leo. Nam vitae justo lorem. Aliquam interdum metus sed nunc fringilla, egestas viverra nisl fringilla. Maecenas facilisis nec quam nec pellentesque. Fusce ultrices egestas libero, a suscipit ex. Donec et tortor libero. Mauris id augue ipsum. Fusce condimentum tristique turpis sed tempor. Sed mattis ex id gravida ultrices.", 
+                    className = 'card-text', style = {'text-align':'justify'})
+                ],
+                className = 'mt-3'
+            )
+        )
+    ]
+)
+
+tab_ingresos = html.Div(
+    [
+        dbc.Card(
+            dbc.CardBody(
+                children = [
+                    html.H4("Distribución ingresos", className = "card-title"),
+                    main_options2,
+                    dcc.Graph(
+                        id = "treemap_ingresos",
+                        figure = get_treeingresos(),
+                        config = {
+                            'displayModeBar':False
+                        }
+                    ),
+                    html.Br(),
                     html.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu orci nisi. Nunc et ipsum ligula. Nunc mattis augue purus, efficitur dignissim mi finibus vehicula. In eleifend et tellus et dapibus. Donec ut varius nisl. Donec a libero dui. Proin id gravida leo. Nam vitae justo lorem. Aliquam interdum metus sed nunc fringilla, egestas viverra nisl fringilla. Maecenas facilisis nec quam nec pellentesque. Fusce ultrices egestas libero, a suscipit ex. Donec et tortor libero. Mauris id augue ipsum. Fusce condimentum tristique turpis sed tempor. Sed mattis ex id gravida ultrices.", 
                     className = 'card-text', style = {'text-align':'justify'}),
                     html.P("Duis sollicitudin finibus hendrerit. Cras efficitur lorem nec magna pellentesque consequat. Etiam eget ligula ex. Sed ac ex sed justo pellentesque ornare ac at lectus. Aenean id sollicitudin augue. Integer molestie nibh eu ligula venenatis, eu aliquam risus commodo. Phasellus ac massa quis magna lobortis rutrum ut non lectus. Sed pulvinar nisl sit amet elit laoreet, et placerat diam porta. Curabitur condimentum elementum velit ac efficitur. In hac habitasse platea dictumst. Maecenas ultricies, dui sed lacinia consectetur, arcu lorem lobortis eros, eget scelerisque nisi leo ac felis. Pellentesque erat erat, fringilla id nisl non, efficitur euismod orci. Nulla dolor dolor, scelerisque vitae dignissim condimentum, convallis sit amet nisi.", 
@@ -63,42 +269,21 @@ content_ingresos = html.Div(
     ]
 )
 
-egresos_options = html.Div([
-    html.Div([
-        dcc.Dropdown(
-            id = 'input-municipio',
-            options=[
-                {'label': i, 'value': i }
-                for i in municipios
-            ],
-            value = 'Monterrey',
-            clearable = False
-        )],
-        style = {'width': '48%', 'display': 'inline-block'}),
-
-    html.Div([
-        dcc.Dropdown(
-            id = 'input-years',
-            options=[
-                {'label': y, 'value': y}
-                for y in years
-            ],
-            value = '2018',
-            clearable = False
-        )],
-        style = {'width': '48%', 'display': 'inline-block'})])
-
-content_egresos = html.Div(
+tab_egresos = html.Div(
     [
         dbc.Card(
             dbc.CardBody(
                 children = [
-                    html.H4("Egresos económicos por municipio", className = "card-title"),
-                    html.Hr(),
-                    egresos_options,
+                    html.H4("Distribución egresos", className = "card-title"),
+                    main_options3,
                     dcc.Graph(
-                        id = "grafica_egresos" 
+                        id = "treemap_egresos",
+                        figure = get_treeegresos(),
+                        config = {
+                            'displayModeBar': False
+                        }
                     ),
+                    html.Br(),
                     html.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu orci nisi. Nunc et ipsum ligula. Nunc mattis augue purus, efficitur dignissim mi finibus vehicula. In eleifend et tellus et dapibus. Donec ut varius nisl. Donec a libero dui. Proin id gravida leo. Nam vitae justo lorem. Aliquam interdum metus sed nunc fringilla, egestas viverra nisl fringilla. Maecenas facilisis nec quam nec pellentesque. Fusce ultrices egestas libero, a suscipit ex. Donec et tortor libero. Mauris id augue ipsum. Fusce condimentum tristique turpis sed tempor. Sed mattis ex id gravida ultrices.", 
                     className = 'card-text', style = {'text-align':'justify'}),
                     html.P("Duis sollicitudin finibus hendrerit. Cras efficitur lorem nec magna pellentesque consequat. Etiam eget ligula ex. Sed ac ex sed justo pellentesque ornare ac at lectus. Aenean id sollicitudin augue. Integer molestie nibh eu ligula venenatis, eu aliquam risus commodo. Phasellus ac massa quis magna lobortis rutrum ut non lectus. Sed pulvinar nisl sit amet elit laoreet, et placerat diam porta. Curabitur condimentum elementum velit ac efficitur. In hac habitasse platea dictumst. Maecenas ultricies, dui sed lacinia consectetur, arcu lorem lobortis eros, eget scelerisque nisi leo ac felis. Pellentesque erat erat, fringilla id nisl non, efficitur euismod orci. Nulla dolor dolor, scelerisque vitae dignissim condimentum, convallis sit amet nisi.", 
@@ -107,6 +292,54 @@ content_egresos = html.Div(
                 className = 'mt-3'
             )
         )
+    ]
+)
+
+
+content_bars = html.Div(
+    [
+        dbc.Card(
+            dbc.CardBody(
+                children = [
+                    html.Br(),
+                    html.H4("Ingresos/Egresos económicos por municipio", className = "card-title"),
+                    html.Hr(),
+                    #r_options,
+                    dcc.Graph(
+                        id = "grafica_ingresos" ,
+                        figure = get_bars(),
+                        config = {
+                            'displayModeBar':False
+                        }
+                    ),
+                    html.Br(),
+                    dcc.Graph(
+                        id = "grafica_egresos",
+                        figure = get_bars(mode='e'),
+                        config = {
+                            'displayModeBar':False
+                        }
+                    )
+                ],
+                className = 'mt-3'
+            )
+        )
+    ]
+)
+
+distr_tabs = html.Div(
+    [
+        dbc.Tabs(
+            [
+                dbc.Tab(label="Rel. Ingresos/Egresos", tab_id="tab-1"),
+                dbc.Tab(label="Distr. Ingresos", tab_id="tab-2"),
+                dbc.Tab(label="Distr. Egresos", tab_id="tab-3")
+
+            ],
+            id="distrabs",
+            active_tab="tab-1",
+        ),
+        html.Div(id="tabcontent"),
     ]
 )
 
@@ -126,20 +359,55 @@ layout = html.Div(
                 dbc.Row(
                     children = [
                         dbc.Col(
-                            md = 6, 
+                            lg = 6,
+                            md = 6,
+                            sm = 12,
                             children = [
-                                content_ingresos
+                                distr_tabs
                             ]
                         ),
 
                         dbc.Col(
-                            md = 6, 
+                             lg = 6,
+                            md = 6,
+                            sm = 12, 
                             children = [
-                                content_egresos
+                                content_bars
                             ]   
                         )
-                    ])
-
-
-            ]
+                    ])]
 )])
+
+@app.callback(Output("tabcontent", "children"), [Input("distrabs", "active_tab")])
+def switch_tab(at):
+    if at == "tab-1":
+        return tab_relacion
+    elif at == "tab-2":
+        return tab_ingresos
+    elif at == "tab-3":
+        return tab_egresos
+    return html.P("Error al cargar!...")
+
+@app.callback(Output('grafica_relacion', 'figure'), [Input('input-grupo','value'), Input('input-years','value')])
+def select_relacion(selected_group, selected_year):
+    return get_sunburst(selected_year, selected_group)
+
+@app.callback(Output('treemap_ingresos', 'figure'), [Input('input-grupo2','value'), Input('input-years2','value')])
+def select_relacion2(selected_group2, selected_year2):
+    return get_treeingresos(selected_year2, selected_group2)
+
+@app.callback(Output('treemap_egresos', 'figure'), [Input('input-grupo3','value'), Input('input-years3','value')])
+def select_relacion3(selected_group3, selected_year3):
+    return get_treeegresos(selected_year3, selected_group3)
+
+#@app.callback([Output('grafica_ingresos','figure'),Output('grafica_egresos','figure')], [Input('input-municipio','value'), Input('input-anno','value')])
+#def select_bar(selected_municipio, selected_year4):
+#    return get_bars(year=selected_year4, municipio=selected_municipio, mode='i'), get_bars(year=selected_year4, municipio=selected_municipio, mode='e')
+
+@app.callback([Output('grafica_ingresos','figure'),Output('grafica_egresos','figure')],[Input('grafica_relacion', 'clickData'), Input('input-years', 'value')])
+def print_data(clickData, selected_year5):
+    if clickData is None:
+        return get_bars(year=selected_year5, municipio='Monterrey', mode='i'), get_bars(year=selected_year5, municipio='Monterrey', mode='e')
+    else:
+        return get_bars(year=selected_year5, municipio=clickData['points'][0]['id'], mode='i'), get_bars(year=selected_year5, municipio=clickData['points'][0]['id'], mode='e')
+    

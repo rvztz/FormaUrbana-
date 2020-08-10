@@ -10,7 +10,7 @@ from navbar import Navbar
 server = app.server
 server.secret_key = os.environ.get('secret_key', 'secret')
 #nav = Navbar()
-app.layout = html.Div([
+app.layout = html.Div(children = [
     dcc.Location(id = 'url', refresh = False),
     html.Div(id='page-content')
 ])
