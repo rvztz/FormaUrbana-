@@ -12,7 +12,6 @@ from app import app
 df_censo = pd.read_csv('./data/censo.csv')
 df_concen = pd.read_csv("./data/gradiente.csv")
 df_denue = pd.read_csv('./data/denue.csv')
-available_denue = ['comercio','industria', 'oficina', 'servicios'] 
 radio = json.load(open('./data/MapaGradientes.json'))
 
 
@@ -32,7 +31,10 @@ maps_titles = {
     'AreaC':'Metros cuadrados de área construida',
     'PPJov2000':'Población joven 2000',
     'PPJov2016':'Población joven 2016',
-    'CambioPP':'Diferencia de población joven 2000 - 2016'
+    'CambioPP':'Diferencia de población joven 2000 - 2016',
+    'PropPC':'Proporción pavimentos-construcción',
+    'ConpP':'Consumo per cápita de paviementos',
+    'AreaPav':'Área pavimentada'
 }
 
 def get_denue(year='2019'):
@@ -40,10 +42,23 @@ def get_denue(year='2019'):
         year = '2019'
     
     fig_denue = go.Figure()
-    for feature in available_denue:
-        fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)[feature],
-                    mode='lines',
-                    name=feature))
+    
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['comercio'],
+            mode='lines+markers',
+            name='Comercio'))
+
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['industria'],
+            mode='lines+markers',
+            name='Industria'))
+
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['oficina'],
+            mode='lines+markers',
+            name='Oficina'))
+
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['servicios'],
+            mode='lines+markers',
+            name='Servicios'))
+    
 
     fig_denue.update_layout(
     xaxis_title="Distancia a centro de la ciudad",
@@ -121,6 +136,9 @@ suelo_options= dcc.Dropdown(
     options=[
         {'label': 'Coef. uso de suelo', 'value': 'CUS'},
         {'label': 'Área construida', 'value': 'AreaC'},
+        {'label': 'Proporción pavimentos-construcción', 'value': 'PropPC'},
+        {'label': 'Consumo per cápita de pavimientos', 'value': 'ConpP'},
+        {'label': 'Área pavimentada', 'value': 'AreaPav'}
     ],
     id = "suelo-options",
     value='CUS',
@@ -356,13 +374,13 @@ def select_figure(selected_year):
     return get_denue(selected_year), empleos_content[selected_year+'_1'], empleos_content[selected_year+'_2']
 
 @app.callback([Output('map_pobemp','figure'), Output('titulopob', 'children')], [Input('pob-options','value')])
-def select_pob(selected_cat1):
+def select_pob1(selected_cat1):
         return get_mapa(selected_cat1), maps_titles[selected_cat1]
 
 @app.callback([Output('map_uso','figure'), Output('titulo_suelo', 'children')], [Input('suelo-options','value')])
-def select_pob(selected_cat2):
+def select_pob2(selected_cat2):
         return get_mapa(selected_cat2), maps_titles[selected_cat2]
 
 @app.callback([Output('map_joven','figure'), Output('titulo_joven', 'children')], [Input('jov-options','value')])
-def select_pob(selected_cat3):
+def select_pob3(selected_cat3):
         return get_mapa(selected_cat3), maps_titles[selected_cat3]

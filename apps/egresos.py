@@ -12,7 +12,7 @@ df_a = pd.read_csv('./data/ingeng_a.csv')
 df_b = pd.read_csv('./data/ingeng_b.csv')
 
 municipios = {'Abasolo' :'b', 'Apodaca':'a', 'Cadereyta':'b', 'El Carmen':'b',
-       'Ciénega de Flores':'b', 'García':'b', 'San Pedro':'a', 'General Escobedo':'b',
+       'Ciénaga de Flores':'b', 'García':'b', 'San Pedro':'a', 'General Escobedo':'b',
        'General Zuazua':'b', 'Guadalupe':'a', 'Juárez':'b', 'Monterrey':'a', 'Pesquería':'b',
        'Salinas Victoria':'b', 'San Nicolás':'a', 'Santa Catarina':'b', 'Santiago':'b'}
 
@@ -49,26 +49,23 @@ def get_treeegresos(year='2018',group = 'a'):
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
 
-def get_bars(year='2018', municipio='Monterrey',mode='i'):
+def get_bars(municipio='Monterrey',mode='i'):
 
     if municipios[municipio]=='a':
-        df_temp = df_a.query('Año=='+year+'and Municipio=="'+municipio+'"')
+        df_temp = df_a.query('Municipio=="'+municipio+'"')
     else:
-        df_temp = df_b.query('Año=='+year+'and Municipio=="'+municipio+'"')
+        df_temp = df_b.query('Municipio=="'+municipio+'"')
 
     if mode=='i':
-        bars = px.bar(df_temp.dropna(subset=['Ingresos', 'Monto ingresos']), x = 'Ingresos', y = 'Monto ingresos', color = 'Ingresos',template='plotly_dark')
+        bars = px.line(df_temp.dropna(subset=['Ingresos', 'Monto ingresos']), x = 'Año', y = 'Monto ingresos', color = 'Ingresos',template='plotly_dark')
     else:
-        bars = px.bar(df_temp.dropna(subset=['Egresos', 'Monto egresos']), x = 'Egresos', y = 'Monto egresos', color = 'Egresos',template='plotly_dark')
+        bars = px.line(df_temp.dropna(subset=['Egresos', 'Monto egresos']), x = 'Año', y = 'Monto egresos', color = 'Egresos',template='plotly_dark')
         
-    bars.update_layout(showlegend=False)
     return bars
-
 
 r_options = html.Div(children=[
 
-    html.Div(
-        dcc.Dropdown(
+    dcc.Dropdown(
             id = 'input-municipio',
             options=[
                 {'label': i, 'value': i }
@@ -80,28 +77,8 @@ r_options = html.Div(children=[
                 'backgroundColor': '#121212',
                 'color' : '#111111'
             }
-        ),
-    style={'width': '48%', 'display': 'inline-block'}
-        ),
-
-    html.Div(
-        dcc.Dropdown(
-            id = 'input-anno',
-            options=[
-                {'label': y, 'value': y}
-                for y in years
-            ],
-            value = '2018',
-            clearable = False,
-            style = {
-                'backgroundColor': '#121212',
-                'color' : '#111111'
-            }
-        ),
-        style={'width': '48%', 'float': 'right', 'display': 'inline-block'}
         )
-        
-        ])
+])
 
 main_options = html.Div(children=[
 
@@ -303,8 +280,7 @@ content_bars = html.Div(
                 children = [
                     html.Br(),
                     html.H4("Ingresos/Egresos económicos por municipio", className = "card-title"),
-                    html.Hr(),
-                    #r_options,
+                    r_options,
                     dcc.Graph(
                         id = "grafica_ingresos" ,
                         figure = get_bars(),
@@ -400,14 +376,6 @@ def select_relacion2(selected_group2, selected_year2):
 def select_relacion3(selected_group3, selected_year3):
     return get_treeegresos(selected_year3, selected_group3)
 
-#@app.callback([Output('grafica_ingresos','figure'),Output('grafica_egresos','figure')], [Input('input-municipio','value'), Input('input-anno','value')])
-#def select_bar(selected_municipio, selected_year4):
-#    return get_bars(year=selected_year4, municipio=selected_municipio, mode='i'), get_bars(year=selected_year4, municipio=selected_municipio, mode='e')
-
-@app.callback([Output('grafica_ingresos','figure'),Output('grafica_egresos','figure')],[Input('grafica_relacion', 'clickData'), Input('input-years', 'value')])
-def print_data(clickData, selected_year5):
-    if clickData is None:
-        return get_bars(year=selected_year5, municipio='Monterrey', mode='i'), get_bars(year=selected_year5, municipio='Monterrey', mode='e')
-    else:
-        return get_bars(year=selected_year5, municipio=clickData['points'][0]['id'], mode='i'), get_bars(year=selected_year5, municipio=clickData['points'][0]['id'], mode='e')
-    
+@app.callback([Output('grafica_ingresos','figure'),Output('grafica_egresos','figure')], [Input('input-municipio','value')])
+def select_bar(selected_municipio):
+    return get_bars(municipio=selected_municipio, mode='i'), get_bars(municipio=selected_municipio, mode='e')
