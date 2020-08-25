@@ -10,6 +10,7 @@ from app import app
 
 df_a = pd.read_csv('./data/ingeng_a.csv')
 df_b = pd.read_csv('./data/ingeng_b.csv')
+df_prop = pd.read_csv('./data/prop_inv.csv')
 
 municipios = {'Abasolo' :'b', 'Apodaca':'a', 'Cadereyta':'b', 'El Carmen':'b',
        'Ciénaga de Flores':'b', 'García':'b', 'San Pedro':'a', 'General Escobedo':'b',
@@ -18,20 +19,17 @@ municipios = {'Abasolo' :'b', 'Apodaca':'a', 'Cadereyta':'b', 'El Carmen':'b',
 
 years = ['1990', '2000', '2010', '2015', '2018']
 
-def get_sunburst(year='2018',group = 'a'):
-    if group=='a':
-        df_temp = df_a.query('Año=='+year).dropna(subset=['Concepto', 'Total'])
-    else:
-        df_temp = df_b.query('Año=='+year).dropna(subset=['Concepto', 'Total'])
+def get_sunburst(year='2015'):
 
-    sunburst = px.sunburst(df_temp, path= ['Municipio', 'Concepto'], values = 'Total', color = 'Total' ,color_continuous_scale='magma',template='plotly_dark', height=700)
-    sunburst.data[0].textinfo = 'label+value'
-    return sunburst
+    pay = px.pie(df_prop.query('Año =='+year).dropna(how='any'), values='prop_inv', names='Municipio' ,color_discrete_sequence=px.colors.sequential.Magma, height=700, template = 'plotly_dark', labels = {'prop_inv':'Gasto per cap.'})
+    pay.update_traces(textposition='inside', textinfo = 'percent + label')
+
+    return pay
 
 def get_treeingresos(year='2018',group = 'a'):
     if group=='a':
         df_temp = df_a.query('Año=='+year).dropna(subset=['Monto ingresos', 'Ingresos'])
-    else:
+    elif group == 'b':
         df_temp = df_b.query('Año=='+year).dropna(subset=['Monto ingresos', 'Ingresos'])
 
     tringresos = px.treemap(df_temp, path=['Municipio', 'Ingresos'], values = 'Monto ingresos', color = 'Monto ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=700)
@@ -42,7 +40,7 @@ def get_treeingresos(year='2018',group = 'a'):
 def get_treeegresos(year='2018',group = 'a'):
     if group=='a':
         df_temp = df_a.query('Año=='+year).dropna(subset=['Monto egresos', 'Egresos'])
-    else:
+    elif group == 'b':
         df_temp = df_b.query('Año=='+year).dropna(subset=['Monto egresos', 'Egresos'])
 
     tregresos = px.treemap(df_temp, path=['Municipio', 'Egresos'], values = 'Monto egresos', color = 'Monto egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=700)
@@ -82,38 +80,18 @@ r_options = html.Div(children=[
 
 main_options = html.Div(children=[
 
-        html.Div(
-        dcc.Dropdown(
-            id = 'input-grupo',
-            options=[
-                {'label': 'Grupo A', 'value':'a'},
-                {'label': 'Grupo B', 'value':'b'},   
-            ],
-            value = 'a',
-            clearable = False,
-            style = {
-                'backgroundColor': '#121212',
-                'color' : '#111111'
-            }
-        ), 
-        style={'width': '48%', 'display': 'inline-block'}
-        ),
-
-        html.Div(
         dcc.Dropdown(
             id = 'input-years',
             options=[
                 {'label': y, 'value': y}
-                for y in years
+                for y in ['1990','2000','2010','2015']
             ],
-            value = '2018',
+            value = '2015',
             clearable = False,
             style = {
                 'backgroundColor': '#121212',
                 'color' : '#111111'
             }
-        ),
-    style={'width': '48%', 'float': 'right', 'display': 'inline-block'}
         )
         
 ])
@@ -364,9 +342,9 @@ def switch_tab(at):
         return tab_egresos
     return html.P("Error al cargar!...")
 
-@app.callback(Output('grafica_relacion', 'figure'), [Input('input-grupo','value'), Input('input-years','value')])
-def select_relacion(selected_group, selected_year):
-    return get_sunburst(selected_year, selected_group)
+@app.callback(Output('grafica_relacion', 'figure'), [Input('input-years','value')])
+def select_relacion(selected_year):
+    return get_sunburst(selected_year)
 
 @app.callback(Output('treemap_ingresos', 'figure'), [Input('input-grupo2','value'), Input('input-years2','value')])
 def select_relacion2(selected_group2, selected_year2):

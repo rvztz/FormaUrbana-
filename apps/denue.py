@@ -26,15 +26,15 @@ empleos_content = {
 
 maps_titles = {
     'Pop0_16' : 'Diferencia de población 2000 - 2016',
-    'Emp10_19' : 'Diferencia de empleos 2010 - 2019',
-    'CUS': 'Coeficiente de uso de suelo', 
+    'Emp10_19' : 'Diferencia de número de empleos 2010 - 2019',
+    'CUS': 'Coeficiente de uso de suelo (CUS)', 
     'AreaC':'Metros cuadrados de área construida',
-    'PPJov2000':'Población joven 2000',
-    'PPJov2016':'Población joven 2016',
+    'PPJov2000':'Porcentaje de población joven 2000',
+    'PPJov2016':'Porcentaje de población joven 2016',
     'CambioPP':'Diferencia de población joven 2000 - 2016',
-    'PropPC':'Proporción pavimentos-construcción',
-    'ConpP':'Consumo per cápita de paviementos',
-    'AreaPav':'Área pavimentada'
+    'PropPC':'Proporción pavimentos/construcción',
+    'ConpP':'Consumo per cápita de pavimentos',
+    'PorPav':'Porcentaje del área que está pavimentada'
 }
 
 def get_denue(year='2019'):
@@ -61,7 +61,7 @@ def get_denue(year='2019'):
     
 
     fig_denue.update_layout(
-    xaxis_title="Distancia a centro de la ciudad",
+    xaxis_title="Distancia a centro de la ciudad (km)",
     yaxis_title="Número de trabajos",
     template= 'plotly_dark'
     )
@@ -88,7 +88,7 @@ def get_censo():
                     name='Población 2016'))
 
     fig_censo.update_layout(
-        xaxis_title="Distancia a centro de la ciudad",
+        xaxis_title="Distancia a centro de la ciudad (km)",
         yaxis_title="Número de personas",
         template = 'plotly_dark'
     )
@@ -137,8 +137,8 @@ suelo_options= dcc.Dropdown(
         {'label': 'Coef. uso de suelo', 'value': 'CUS'},
         {'label': 'Área construida', 'value': 'AreaC'},
         {'label': 'Proporción pavimentos-construcción', 'value': 'PropPC'},
-        {'label': 'Consumo per cápita de pavimientos', 'value': 'ConpP'},
-        {'label': 'Área pavimentada', 'value': 'AreaPav'}
+        {'label': 'Consumo per cápita de pavimentos', 'value': 'ConpP'},
+        {'label': 'Porcentaje área pavimentada', 'value': 'PorPav'}
     ],
     id = "suelo-options",
     value='CUS',
@@ -194,23 +194,24 @@ tab_censo = dbc.Card(
     dbc.CardBody(
         children = [
             html.H4("Población y vivienda 2000/2016", className = "card-title"),
-            html.Hr(),
-            html.P("En cuanto a población se nota una marcada tendencia entre 2000 y 2016. Los primeros 11 kilómetros de la ciudad han sido despoblados marcadamente, con una pérdida del 12% de la población respecto al año 2000, este sector de la ciudad comprende el centro histórico y se extiende hasta San Pedro Garza García, el inicio de Carretera Nacional, el centro de Guadalupe, el centro de San Nicolás de los Garza y Mitras Centro. Sin embargo, el número de viviendas en este sector incrementó en 11.7%, indicando que, aunque la población está deshabitando la zona, la construcción continúa, probablemente provocando una caída en la densidad de población de la mancha urbana."
-            ,className = "card-text", style = {'text-align': 'justify'}),
-            html.P("No obstante, la población total de la ciudad ha incrementado en 22%, pasando de 3,3332,000 habitantes en el año 2000 a 4,062,800 en el 2016. Esto significa que la población se ha ido a las periferias de la ciudad, más allá de los primeros 11 kilómetros, teniendo el kilómetro 15 un aumento de más de 100 mil habitantes. El incremento de población entre los 12 kilómetros y los 40 ha sido del 66%. De igual forma a estas distancias el número de viviendas a incrementado considerablemente, pasando de 340,209 viviendas en el 2000 a 896,873 en el año 2016, es decir, un incremento de más del 160% por ciento. Esto demuestra una mayor demanda habitacional en las periferias de la ciudad. Mientras que en el año 2000 sólo el 43.5% de la población vivía a más de 11 kilómetros del centro histórico, en el 2016 fue el 59.1% quién habitó las periferias del área metropolitana."
-            ,className = "card-text", style = {'text-align': 'justify'}),
-            html.P("Este cambio de zonas de habitación significa mayores distancias de traslado al centro de empleos consolidado históricamente. Sin embargo, también suponen nuevas fuentes de empleo en servicios y comercios para satisfacer las necesidades de los nuevos habitantes."
-            ,className = "card-text", style = {'text-align': 'justify'}),
             dcc.Graph(
                 figure = get_censo(),
                 config = {
                     'displayModeBar' : False
                 }
-            )
+            ),
+            html.Br(), 
+            html.P("En cuanto a población se nota una marcada tendencia entre 2000 y 2016. Los primeros 11 kilómetros de la ciudad han sido despoblados marcadamente, con una pérdida del 12% de la población respecto al año 2000, este sector de la ciudad comprende el centro histórico y se extiende hasta San Pedro Garza García, el inicio de Carretera Nacional, el centro de Guadalupe, el centro de San Nicolás de los Garza y Mitras Centro. Sin embargo, el número de viviendas en este sector incrementó en 11.7%, indicando que, aunque la población está deshabitando la zona, la construcción continúa, probablemente provocando una caída en la densidad de población de la mancha urbana."
+            ,className = "card-text", style = {'text-align': 'justify'}),
+            html.P("No obstante, la población total de la ciudad ha incrementado en 22%, pasando de 3,3332,000 habitantes en el año 2000 a 4,062,800 en el 2016. Esto significa que la población se ha ido a las periferias de la ciudad, más allá de los primeros 11 kilómetros, teniendo el kilómetro 15 un aumento de más de 100 mil habitantes. El incremento de población entre los 12 kilómetros y los 40 ha sido del 66%. De igual forma a estas distancias el número de viviendas a incrementado considerablemente, pasando de 340,209 viviendas en el 2000 a 896,873 en el año 2016, es decir, un incremento de más del 160% por ciento. Esto demuestra una mayor demanda habitacional en las periferias de la ciudad. Mientras que en el año 2000 sólo el 43.5% de la población vivía a más de 11 kilómetros del centro histórico, en el 2016 fue el 59.1% quién habitó las periferias del área metropolitana."
+            ,className = "card-text", style = {'text-align': 'justify'}),
+            html.P("Este cambio de zonas de habitación significa mayores distancias de traslado al centro de empleos consolidado históricamente. Sin embargo, también suponen nuevas fuentes de empleo en servicios y comercios para satisfacer las necesidades de los nuevos habitantes."
+            ,className = "card-text", style = {'text-align': 'justify'})
         ],
         className = "mt-3"
     )   
 )
+
 
 map_distancia = dbc.Card(
     dbc.CardBody(
@@ -279,6 +280,41 @@ map_joven = dbc.Card(
     )   
 )
 
+pic_1960 = dbc.Card(
+    dbc.CardBody(
+        children = [
+            html.H4(children='Forma de la ciudad monocéntrica 1960', className = "card-title"),
+            dbc.Container(
+                fluid = True,
+                children = [
+                html.Img(
+                    src = app.get_asset_url('1960-01.png'),
+                    style={'height':'80%', 'width':'80%'}
+                )]
+            )
+        ],
+        className = "mt-3"
+    )   
+)
+
+pic_2020 = dbc.Card(
+    dbc.CardBody(
+        children = [
+            html.H4(children='Forma de la ciudad policéntrica 2020', className = "card-title"),
+            dbc.Container(
+                fluid = True,
+                children = [
+                html.Img(
+                    src = app.get_asset_url('2020-01.png'),
+                    style={'height':'80%', 'width':'80%'}
+                )]
+            )
+        ],
+        className = "mt-3"
+    )   
+)
+
+
 
 map_tabs = html.Div(
     [
@@ -301,7 +337,7 @@ tabs = html.Div(
     [
         dbc.Tabs(
             [
-                dbc.Tab(label="Act. Economicas", tab_id="tab-1"),
+                dbc.Tab(label="Act. Económicas", tab_id="tab-1"),
                 dbc.Tab(label="Población y vivienda", tab_id="tab-2")
 
             ],
@@ -341,10 +377,9 @@ layout = html.Div(
                         map_tabs
                     ]
                 )
-
-
             ]
-        )])
+        ),        
+        ])
     
 
 ])
@@ -368,6 +403,7 @@ def switch_maptab(at):
     elif at == "maptab-4":
         return map_joven
     return html.P("Error al cargar!...")
+
 
 @app.callback([Output("grafica_denue", "figure"), Output("p_act1", "children"), Output("p_act2", "children")], [Input("denue-options", "value")])
 def select_figure(selected_year):
