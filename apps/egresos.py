@@ -10,7 +10,7 @@ from app import app
 
 df_a = pd.read_csv('./data/ingeng_a.csv')
 df_b = pd.read_csv('./data/ingeng_b.csv')
-df_prop = pd.read_csv('./data/prop_inv.csv')
+df_prop = pd.read_csv('./data/prop_inv_trans.csv')
 
 municipios = {'Abasolo' :'b', 'Apodaca':'a', 'Cadereyta':'b', 'El Carmen':'b',
        'Ciénaga de Flores':'b', 'García':'b', 'San Pedro':'a', 'General Escobedo':'b',
@@ -19,12 +19,9 @@ municipios = {'Abasolo' :'b', 'Apodaca':'a', 'Cadereyta':'b', 'El Carmen':'b',
 
 years = ['1990', '2000', '2010', '2015', '2018']
 
-def get_sunburst(year='2015'):
-
-    pay = px.pie(df_prop.query('Año =='+year).dropna(how='any'), values='prop_inv', names='Municipio' ,color_discrete_sequence=px.colors.sequential.Magma, height=700, template = 'plotly_dark', labels = {'prop_inv':'Gasto per cap.'})
-    pay.update_traces(textposition='inside', textinfo = 'percent + label')
-
-    return pay
+def get_bubbles(year='2015'):
+    bubble = px.scatter(df_prop.query('Año =='+year).dropna(how='any',subset=['prop_inv','prop_ingresos']), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=65, labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita en miles de pesos', 'prop_ingresos': 'Ingresos propios del municipio (per cápita en miles de pesos)'})
+    return bubble
 
 def get_treeingresos(year='2018',group = 'a'):
     if group=='a':
@@ -84,7 +81,7 @@ main_options = html.Div(children=[
             id = 'input-years',
             options=[
                 {'label': y, 'value': y}
-                for y in ['1990','2000','2010','2015']
+                for y in years
             ],
             value = '2015',
             clearable = False,
@@ -183,14 +180,16 @@ tab_relacion = html.Div(
                     main_options,
                     dcc.Graph(
                         id = "grafica_relacion",
-                        figure = get_sunburst(),
+                        figure = get_bubbles(),
                         config = {
                             'displayModeBar':False
                         }
                     ),
                     html.Br(),
-                    html.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu orci nisi. Nunc et ipsum ligula. Nunc mattis augue purus, efficitur dignissim mi finibus vehicula. In eleifend et tellus et dapibus. Donec ut varius nisl. Donec a libero dui. Proin id gravida leo. Nam vitae justo lorem. Aliquam interdum metus sed nunc fringilla, egestas viverra nisl fringilla. Maecenas facilisis nec quam nec pellentesque. Fusce ultrices egestas libero, a suscipit ex. Donec et tortor libero. Mauris id augue ipsum. Fusce condimentum tristique turpis sed tempor. Sed mattis ex id gravida ultrices.", 
-                    className = 'card-text', style = {'text-align':'justify'})
+                    html.P('El objetivo de esta sección es identificar las fuentes de financiamiento del crecimiento territorial de la mancha urbana (participaciones federales o ingresos propios) y cómo se ha gastado (gasto corriente o inversión). Asimismo, identificar los municipios con el mayor gasto en inversión per cápita. Los municipios de la periferia urbana como García, General Zuazua, Juárez o Cadereyta han tenido un crecimiento habitacional importante en los últimos 15 años, principalmente a través de vivienda social tipo INFONAVIT.'
+            ,className = "card-text", style = {'text-align': 'justify'}),
+                    html.P('La pregunta es: ¿en qué medida este desarrollo territorial ha estado financiado a través de participaciones federales versus ingresos propios? La fuente de información para estos comparativos procede de los reportes de Finanzas públicas estatales y municipales de INEGI. Los ingresos y egresos se reportan en cantidades brutas de cada año, sin actualización por la inflación.'
+            ,className = "card-text", style = {'text-align': 'justify'})
                 ],
                 className = 'mt-3'
             )
@@ -211,12 +210,7 @@ tab_ingresos = html.Div(
                         config = {
                             'displayModeBar':False
                         }
-                    ),
-                    html.Br(),
-                    html.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu orci nisi. Nunc et ipsum ligula. Nunc mattis augue purus, efficitur dignissim mi finibus vehicula. In eleifend et tellus et dapibus. Donec ut varius nisl. Donec a libero dui. Proin id gravida leo. Nam vitae justo lorem. Aliquam interdum metus sed nunc fringilla, egestas viverra nisl fringilla. Maecenas facilisis nec quam nec pellentesque. Fusce ultrices egestas libero, a suscipit ex. Donec et tortor libero. Mauris id augue ipsum. Fusce condimentum tristique turpis sed tempor. Sed mattis ex id gravida ultrices.", 
-                    className = 'card-text', style = {'text-align':'justify'}),
-                    html.P("Duis sollicitudin finibus hendrerit. Cras efficitur lorem nec magna pellentesque consequat. Etiam eget ligula ex. Sed ac ex sed justo pellentesque ornare ac at lectus. Aenean id sollicitudin augue. Integer molestie nibh eu ligula venenatis, eu aliquam risus commodo. Phasellus ac massa quis magna lobortis rutrum ut non lectus. Sed pulvinar nisl sit amet elit laoreet, et placerat diam porta. Curabitur condimentum elementum velit ac efficitur. In hac habitasse platea dictumst. Maecenas ultricies, dui sed lacinia consectetur, arcu lorem lobortis eros, eget scelerisque nisi leo ac felis. Pellentesque erat erat, fringilla id nisl non, efficitur euismod orci. Nulla dolor dolor, scelerisque vitae dignissim condimentum, convallis sit amet nisi.", 
-                    className = 'card-text', style = {'text-align':'justify'})
+                    )
                 ],
                 className = 'mt-3'
             )
@@ -237,12 +231,7 @@ tab_egresos = html.Div(
                         config = {
                             'displayModeBar': False
                         }
-                    ),
-                    html.Br(),
-                    html.P("Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu orci nisi. Nunc et ipsum ligula. Nunc mattis augue purus, efficitur dignissim mi finibus vehicula. In eleifend et tellus et dapibus. Donec ut varius nisl. Donec a libero dui. Proin id gravida leo. Nam vitae justo lorem. Aliquam interdum metus sed nunc fringilla, egestas viverra nisl fringilla. Maecenas facilisis nec quam nec pellentesque. Fusce ultrices egestas libero, a suscipit ex. Donec et tortor libero. Mauris id augue ipsum. Fusce condimentum tristique turpis sed tempor. Sed mattis ex id gravida ultrices.", 
-                    className = 'card-text', style = {'text-align':'justify'}),
-                    html.P("Duis sollicitudin finibus hendrerit. Cras efficitur lorem nec magna pellentesque consequat. Etiam eget ligula ex. Sed ac ex sed justo pellentesque ornare ac at lectus. Aenean id sollicitudin augue. Integer molestie nibh eu ligula venenatis, eu aliquam risus commodo. Phasellus ac massa quis magna lobortis rutrum ut non lectus. Sed pulvinar nisl sit amet elit laoreet, et placerat diam porta. Curabitur condimentum elementum velit ac efficitur. In hac habitasse platea dictumst. Maecenas ultricies, dui sed lacinia consectetur, arcu lorem lobortis eros, eget scelerisque nisi leo ac felis. Pellentesque erat erat, fringilla id nisl non, efficitur euismod orci. Nulla dolor dolor, scelerisque vitae dignissim condimentum, convallis sit amet nisi.", 
-                    className = 'card-text', style = {'text-align':'justify'})
+                    )
                 ],
                 className = 'mt-3'
             )
@@ -344,7 +333,7 @@ def switch_tab(at):
 
 @app.callback(Output('grafica_relacion', 'figure'), [Input('input-years','value')])
 def select_relacion(selected_year):
-    return get_sunburst(selected_year)
+    return get_bubbles(selected_year)
 
 @app.callback(Output('treemap_ingresos', 'figure'), [Input('input-grupo2','value'), Input('input-years2','value')])
 def select_relacion2(selected_group2, selected_year2):

@@ -25,13 +25,14 @@ empleos_content = {
 }
 
 maps_titles = {
-    'Pop0_16' : 'Diferencia de población 2000 - 2016',
-    'Emp10_19' : 'Diferencia de número de empleos 2010 - 2019',
+    'Pop0_16' : 'Diferencia de población 2016 - 2000',
+    'Emp10_19' : 'Diferencia de número de empleos 2019 - 2010',
     'CUS': 'Coeficiente de uso de suelo (CUS)', 
     'AreaC':'Metros cuadrados de área construida',
-    'PPJov2000':'Porcentaje de población joven 2000',
-    'PPJov2016':'Porcentaje de población joven 2016',
-    'CambioPP':'Diferencia de población joven 2000 - 2016',
+    'PPJov90':'Porcentaje de población menor a quince años - 1990',
+    'PPJov2000':'Porcentaje de población menor a quince años - 2000',
+    'PPJov2016':'Porcentaje de población menor a quince años - 2016',
+    'CambioPP90':'Diferencia de población menor a quince años 2016 - 2000',
     'PropPC':'Proporción pavimentos/construcción',
     'ConpP':'Consumo per cápita de pavimentos',
     'PorPav':'Porcentaje del área que está pavimentada'
@@ -62,7 +63,7 @@ def get_denue(year='2019'):
 
     fig_denue.update_layout(
     xaxis_title="Distancia a centro de la ciudad (km)",
-    yaxis_title="Número de trabajos",
+    yaxis_title="Número de empleos",
     template= 'plotly_dark'
     )
 
@@ -151,13 +152,14 @@ suelo_options= dcc.Dropdown(
 
 jov_options = dcc.Dropdown(
     options=[
-        {'label': 'Población joven 2000', 'value': 'PPJov2000'},
-        {'label': 'Población joven 2016', 'value': 'PPJov2016'},
-        {'label': 'Cambio de población joven', 'value': 'CambioPP'}
+        {'label': 'Población menor a quince años - 1990', 'value': 'PPJov90'},
+        {'label': 'Población menor a quince años - 2000', 'value': 'PPJov2000'},
+        {'label': 'Población menor a quince años - 2016', 'value': 'PPJov2016'},
+        {'label': 'Cambio de población menor a quince años 90-16', 'value': 'CambioPP90'}
 
     ],
     id = "jov-options",
-    value='PPJov2000',
+    value='PPJov2016',
     clearable=False,
     style = {
         'backgroundColor': '#121212',
@@ -222,7 +224,10 @@ map_distancia = dbc.Card(
                 config = {
                     'displayModeBar' : False
                 }
-            )
+            ), 
+            html.Br(),
+            html.P('Esta sección realiza una exploración del cambio de la función urbana de monterrey considerando los cambios en la morfología policéntrica de la ciudad ocurridos en los últimos veinte y treinta años. En este análisis, se trazaron círculos concéntricos de 1 kilómetro a partir de la macroplaza hasta los 40 kilómetros de distancia del centro de la ciudad. Los círculos fueron cortados con el tamaño de la mancha urbana actual para generar una serie de métricas que exploran el cambio en la ubicación de viviendas y empleos en el período comprendido entre el 2000 y el 2020.'
+            ,className = "card-text", style = {'text-align': 'justify'})
         ],
         className = "mt-3"
     )   
@@ -239,7 +244,12 @@ map_poblacion = dbc.Card(
                 config = {
                     'displayModeBar' : False
                 }
-            )
+            ),
+            html.Br(),
+            html.P('Esta serie de mapas fueron construidos a partir de información disponible en INEGI. En el caso poblacional, se utilizó la cartografía de manzanas del Censo del año 2000 y del Inventario Nacional de Viviendas del 2016. En el caso del empleo, se utilizó el Directorio Estadístico Nacional de Unidades Económicas (DENUE) del año 2000 y del 2019. Los colores oscuros del mapa de diferencia de población indican las zonas que perdieron población entre el 2000 y el 2016; los colores claros identifican las zonas que aumentaron población. '
+            ,className = "card-text", style = {'text-align': 'justify'}),
+            html.P('En el caso del empleo, se puede apreciar una pérdida de empleos en el centro de la ciudad y en el periurbano, pero un incremento en los círculos ubicados entre 12 y 19 kilómetros de distancia del centro de la ciudad. Estos mapas muestran que en los últimos quince años ha ocurrido una migración residencial del centro de la ciudad hacia la periferia. Los empleos también han migrado hacia zonas no centrales, consolidando una morfología policéntrica de la ZMM. '
+            ,className = "card-text", style = {'text-align': 'justify'})
         ],
         className = "mt-3"
     )   
@@ -256,7 +266,10 @@ map_cus = dbc.Card(
                 config = {
                     'displayModeBar' : False
                 }
-            )
+            ),
+            html.Br(), 
+            html.P('A partir de la información catastral consultada, estimamos el Coeficiente de Utilización del Suelo (CUS) promedio en los círculos concéntricos trazados a partir del centro de la ciudad. Los colores más claros indican una mayor proporción de área construida contra área del terreno. La zona central de la ciudad tiene el CUS más alto, el cual se reduce gradualmente conforme nos movemos del centro hacia la periferia. La excepción son algunas franjas claras ubicadas en García y Juárez, con un CUS muy alto y que corresponden a desarrollos de vivienda social.'
+            ,className = "card-text", style = {'text-align': 'justify'})
         ],
         className = "mt-3"
     )   
@@ -274,46 +287,16 @@ map_joven = dbc.Card(
                 config = {
                     'displayModeBar' : False
                 }
-            )
+            ),
+            html.Br(),
+            html.P('Esta serie de mapas identifican los hogares jóvenes a partir de la información de INEGI de los años 1990, 2000, 2010 y del Inventario Nacional de Vivienda del 2016. En los censos nacionales se pregunta por el número de personas por hogar que son menores de 15 años. Dicha variable es un aproximado para identificar la ubicación residencial de aquellos hogares que se formaron en un periodo menor a los últimos 15 años.'
+            ,className = "card-text", style = {'text-align': 'justify'}),
+            html.P('Observando los mapas de 1990, 2000 y 2016, encontramos que los hogares jóvenes no se ubican en las zonas centrales de la ciudad, sino en zonas consolidadas en la periferia urbana. Esto parece ser un indicador de la incapacidad de regeneración del suelo en la zona central de la ciudad para generar una oferta de vivienda asequible a las necesidades de los nuevos hogares. Pareciera que la oferta de vivienda para los nuevos hogares se concentra recurrentemente (al menos desde 1990) en el limite urbano en su momento.'
+            ,className = "card-text", style = {'text-align': 'justify'})
         ],
         className = "mt-3"
     )   
 )
-
-pic_1960 = dbc.Card(
-    dbc.CardBody(
-        children = [
-            html.H4(children='Forma de la ciudad monocéntrica 1960', className = "card-title"),
-            dbc.Container(
-                fluid = True,
-                children = [
-                html.Img(
-                    src = app.get_asset_url('1960-01.png'),
-                    style={'height':'80%', 'width':'80%'}
-                )]
-            )
-        ],
-        className = "mt-3"
-    )   
-)
-
-pic_2020 = dbc.Card(
-    dbc.CardBody(
-        children = [
-            html.H4(children='Forma de la ciudad policéntrica 2020', className = "card-title"),
-            dbc.Container(
-                fluid = True,
-                children = [
-                html.Img(
-                    src = app.get_asset_url('2020-01.png'),
-                    style={'height':'80%', 'width':'80%'}
-                )]
-            )
-        ],
-        className = "mt-3"
-    )   
-)
-
 
 
 map_tabs = html.Div(
@@ -323,7 +306,7 @@ map_tabs = html.Div(
                 dbc.Tab(label="Dist. centro", tab_id="maptab-1"),
                 dbc.Tab(label="Población/empleo", tab_id="maptab-2"),
                 dbc.Tab(label="Uso suelo", tab_id="maptab-3"),
-                dbc.Tab(label="Población joven", tab_id="maptab-4")
+                dbc.Tab(label="Pob. joven", tab_id="maptab-4")
 
             ],
             id="maptabs",
@@ -356,7 +339,7 @@ layout = html.Div(
         html.Div(
             className = "mt-3 mb-3",
             children =[
-            html.H2(children ="Forma urbana de la Zona Metropolitana de Monterrey"),
+            html.H2(children ="Función urbana de la Zona Metropolitana de Monterrey"),
             html.Hr()
             ]), 
         dbc.Row(
@@ -366,7 +349,7 @@ layout = html.Div(
                     md = 6,
                     sm = 12,
                     children = [
-                        tabs
+                        map_tabs
                     ]
                 ),
                 dbc.Col(
@@ -374,7 +357,7 @@ layout = html.Div(
                     md = 6, 
                     sm = 12, 
                     children = [
-                        map_tabs
+                        tabs
                     ]
                 )
             ]
