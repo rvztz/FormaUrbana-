@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 import dash
 import dash_bootstrap_components as dbc
 import dash_core_components as dcc
@@ -11,7 +10,10 @@ import plotly.graph_objects as go
 from app import app
 
 df_ingeg = pd.read_csv('./data/ingeg.csv')
+df_ingeg.dropna(how='any', subset=['Monto_ingresos', 'Ingresos','Egresos','Monto_egresos'],inplace=True)
+
 df_prop = pd.read_csv('./data/propinv.csv')
+df_prop.dropna(how='any',subset=['prop_inv','prop_ingresos'], inplace =True)
 
 municipios = df_prop.Municipio.unique()
 years = df_prop.Year.unique().astype(str)
@@ -20,18 +22,17 @@ color_palette = {'b' :['#16336c' , '#273880' , '#403b8f', '#6a4795' , '#7d508f' 
                  'a'  :['#0f2b4f' , '#7d508f', '#e87e59', '#e9f864']}
 
 def get_bubbles(year='2018', hist='a'):
-    bubble = px.scatter(df_prop.query('Year=='+year+'and hist=="'+hist+'"').dropna(how='any',subset=['prop_inv','prop_ingresos']), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=75, 
-                    labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita en miles de pesos)', 'prop_ingresos': 'Ingresos propios del municipio (per cápita en miles de pesos)'}, color_discrete_sequence=color_palette[hist])
+    bubble = px.scatter(df_prop.query('Year=='+year+'and hist=="'+hist+'"'), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=75, labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita en miles de pesos)', 'prop_ingresos': 'Ingresos propios del municipio (per cápita en miles de pesos)'}, color_discrete_sequence=color_palette[hist])
     return bubble
 
 def get_treeingresos(year='2018',hist='a'):
-    tringresos = px.treemap(df_ingeg.query('Year=='+year+'and hist=="'+hist+'"').dropna(how='any', subset=['Monto_ingresos', 'Ingresos']), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    tringresos = px.treemap(df_ingeg.query('Year=='+year+'and hist=="'+hist+'"'), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
     
 
 def get_treeegresos(year='2018',hist='a'):
-    tregresos = px.treemap(df_ingeg.query('Year=='+year+'and hist=="'+hist+'"').dropna(how='any', subset=['Monto_egresos']).loc[(df_ingeg!=0).any(axis=1)], path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    tregresos = px.treemap(df_ingeg.query('Year=='+year+'and hist=="'+hist+'"').loc[(df_ingeg!=0).any(axis=1)], path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
 
