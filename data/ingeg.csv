@@ -1,0 +1,341 @@
+Municipio,Year,Ingresos,Monto_ingresos,Egresos,Monto_egresos,Hist
+Abasolo,1990,Ingresos propios,14587,Gasto corriente,389925,b
+Abasolo,1990,Ingresos provenientes de transferencias federales,464827,Inversión,61029,b
+Abasolo,1990,Ingresos de deuda,12000,Deuda,21442,b
+Abasolo,1990,,,Otros,19018,b
+Apodaca,1990,Ingresos propios,6028705,Gasto corriente,5704863,b
+Apodaca,1990,Ingresos provenientes de transferencias federales,10350945,Inversión,9145609,b
+Apodaca,1990,Ingresos de deuda,665000,Deuda,189252,b
+Apodaca,1990,,,Otros,2004926,b
+Cadereyta,1990,Ingresos propios,1359973,Gasto corriente,3293069,b
+Cadereyta,1990,Ingresos provenientes de transferencias federales,3172825,Inversión,725035,b
+Cadereyta,1990,Ingresos de deuda,73096,Deuda,201475,b
+Cadereyta,1990,,,Otros,386315,b
+El Carmen,1990,Ingresos propios,75445,Gasto corriente,791404,b
+El Carmen,1990,Ingresos provenientes de transferencias federales,1077530,Inversión,181857,b
+El Carmen,1990,Ingresos de deuda,0,Deuda,4259,b
+El Carmen,1990,,,Otros,175455,b
+Ciénaga de Flores,1990,Ingresos propios,234302,Gasto corriente,1267093,b
+Ciénaga de Flores,1990,Ingresos provenientes de transferencias federales,1499673,Inversión,302004,b
+Ciénaga de Flores,1990,Ingresos de deuda,0,Deuda,558,b
+Ciénaga de Flores,1990,,,Otros,164320,b
+García,1990,Ingresos propios,813352,Gasto corriente,2471460,b
+García,1990,Ingresos provenientes de transferencias federales,3325731,Inversión,1418898,b
+García,1990,Ingresos de deuda,230736,Deuda,249481,b
+García,1990,,,Otros,229980,b
+San Pedro,1990,Ingresos propios,41444176,Gasto corriente,35088204,a
+San Pedro,1990,Ingresos provenientes de transferencias federales,29069409,Inversión,22028916,a
+San Pedro,1990,Ingresos de deuda,0,Deuda,1500000,a
+San Pedro,1990,,,Otros,11896465,a
+General Escobedo,1990,Ingresos propios,1740658,Gasto corriente,3626487,b
+General Escobedo,1990,Ingresos provenientes de transferencias federales,4756478,Inversión,1740300,b
+General Escobedo,1990,Ingresos de deuda,184790,Deuda,968431,b
+General Escobedo,1990,,,Otros,346708,b
+General Zuazua,1990,Ingresos propios,121351,Gasto corriente,637501,b
+General Zuazua,1990,Ingresos provenientes de transferencias federales,1264776,Inversión,657007,b
+General Zuazua,1990,Ingresos de deuda,0,Deuda,110,b
+General Zuazua,1990,,,Otros,91509,b
+Guadalupe,1990,Ingresos propios,26367442,Gasto corriente,39138978,a
+Guadalupe,1990,Ingresos provenientes de transferencias federales,27346062,Inversión,11096110,a
+Guadalupe,1990,Ingresos de deuda,0,Deuda,1271595,a
+Guadalupe,1990,,,Otros,2206821,a
+Juárez,1990,Ingresos propios,906216,Gasto corriente,1607322,b
+Juárez,1990,Ingresos provenientes de transferencias federales,1623656,Inversión,633543,b
+Juárez,1990,Ingresos de deuda,0,Deuda,130572,b
+Juárez,1990,,,Otros,158435,b
+Monterrey,1990,Ingresos propios,63355027,Gasto corriente,107139244,a
+Monterrey,1990,Ingresos provenientes de transferencias federales,99954798,Inversión,51570354,a
+Monterrey,1990,Ingresos de deuda,0,Deuda,937910,a
+Monterrey,1990,,,Otros,3662317,a
+Pesquería,1990,Ingresos propios,353217,Gasto corriente,1092401,b
+Pesquería,1990,Ingresos provenientes de transferencias federales,1459639,Inversión,564536,b
+Pesquería,1990,Ingresos de deuda,59850,Deuda,61928,b
+Pesquería,1990,,,Otros,153841,b
+Salinas Victoria,1990,Ingresos propios,291851,Gasto corriente,1132395,b
+Salinas Victoria,1990,Ingresos provenientes de transferencias federales,1621906,Inversión,639548,b
+Salinas Victoria,1990,Ingresos de deuda,0,Deuda,241,b
+Salinas Victoria,1990,,,Otros,141573,b
+San Nicolás,1990,Ingresos propios,22353997,Gasto corriente,34645992,a
+San Nicolás,1990,Ingresos provenientes de transferencias federales,30360464,Inversión,10859561,a
+San Nicolás,1990,Ingresos de deuda,0,Deuda,9006,a
+San Nicolás,1990,,,Otros,7199902,a
+Santa Catarina,1990,Ingresos propios,6177533,Gasto corriente,11722548,b
+Santa Catarina,1990,Ingresos provenientes de transferencias federales,10624132,Inversión,2999575,b
+Santa Catarina,1990,Ingresos de deuda,0,Deuda,1503450,b
+Santa Catarina,1990,,,Otros,576092,b
+Santiago,1990,Ingresos propios,3514253,Gasto corriente,2904156,b
+Santiago,1990,Ingresos provenientes de transferencias federales,2745038,Inversión,2695648,b
+Santiago,1990,Ingresos de deuda,862996,Deuda,993110,b
+Santiago,1990,,,Otros,529373,b
+Abasolo,2000,Ingresos propios,391447,Gasto corriente,6006085,b
+Abasolo,2000,Ingresos provenientes de transferencias federales,6420261,Inversión,598380,b
+Abasolo,2000,Ingresos de deuda,0,Deuda,5662,b
+Abasolo,2000,,,Otros,201581,b
+Apodaca,2000,Ingresos propios,122425276,Gasto corriente,126207647,b
+Apodaca,2000,Ingresos provenientes de transferencias federales,139558198,Inversión,121975550,b
+Apodaca,2000,Ingresos de deuda,4750000,Deuda,7638177,b
+Apodaca,2000,,,Otros,10912100,b
+Cadereyta,2000,Ingresos propios,30037719,Gasto corriente,48388214,b
+Cadereyta,2000,Ingresos provenientes de transferencias federales,53928485,Inversión,26707841,b
+Cadereyta,2000,Ingresos de deuda,0,Deuda,3974251,b
+Cadereyta,2000,,,Otros,4895898,b
+El Carmen,2000,Ingresos propios,2976017,Gasto corriente,8367381,b
+El Carmen,2000,Ingresos provenientes de transferencias federales,11312193,Inversión,5275749,b
+El Carmen,2000,Ingresos de deuda,0,Deuda,0,b
+El Carmen,2000,,,Otros,645080,b
+Ciénaga de Flores,2000,Ingresos propios,9607099,Gasto corriente,11567633,b
+Ciénaga de Flores,2000,Ingresos provenientes de transferencias federales,12598407,Inversión,9342969,b
+Ciénaga de Flores,2000,Ingresos de deuda,0,Deuda,0,b
+Ciénaga de Flores,2000,,,Otros,1294904,b
+García,2000,Ingresos propios,9347709,Gasto corriente,21910134,b
+García,2000,Ingresos provenientes de transferencias federales,26578583,Inversión,12197323,b
+García,2000,Ingresos de deuda,1100000,Deuda,887373,b
+García,2000,,,Otros,2031462,b
+San Pedro,2000,Ingresos propios,369855135,Gasto corriente,278505911,a
+San Pedro,2000,Ingresos provenientes de transferencias federales,160100133,Inversión,95842527,a
+San Pedro,2000,Ingresos de deuda,0,Deuda,7442997,a
+San Pedro,2000,,,Otros,148163833,a
+General Escobedo,2000,Ingresos propios,83056540,Gasto corriente,121655696,b
+General Escobedo,2000,Ingresos provenientes de transferencias federales,119661977,Inversión,70329602,b
+General Escobedo,2000,Ingresos de deuda,14974492,Deuda,8054421,b
+General Escobedo,2000,,,Otros,17653290,b
+General Zuazua,2000,Ingresos propios,2839589,Gasto corriente,9513359,b
+General Zuazua,2000,Ingresos provenientes de transferencias federales,11715951,Inversión,3594728,b
+General Zuazua,2000,Ingresos de deuda,0,Deuda,182421,b
+General Zuazua,2000,,,Otros,1265032,b
+Guadalupe,2000,Ingresos propios,232463419,Gasto corriente,379575666,a
+Guadalupe,2000,Ingresos provenientes de transferencias federales,369061357,Inversión,161828891,a
+Guadalupe,2000,Ingresos de deuda,15794090,Deuda,25403653,a
+Guadalupe,2000,,,Otros,50510656,a
+Juárez,2000,Ingresos propios,22194767,Gasto corriente,23853197,b
+Juárez,2000,Ingresos provenientes de transferencias federales,34176386,Inversión,10061011,b
+Juárez,2000,Ingresos de deuda,0,Deuda,0,b
+Juárez,2000,,,Otros,22456945,b
+Monterrey,2000,Ingresos propios,776403000,Gasto corriente,1016050000,a
+Monterrey,2000,Ingresos provenientes de transferencias federales,846020000,Inversión,509612000,a
+Monterrey,2000,Ingresos de deuda,90200000,Deuda,54719000,a
+Monterrey,2000,,,Otros,132242000,a
+Pesquería,2000,Ingresos propios,6518847,Gasto corriente,12172082,b
+Pesquería,2000,Ingresos provenientes de transferencias federales,10255747,Inversión,2778237,b
+Pesquería,2000,Ingresos de deuda,100000,Deuda,198882,b
+Pesquería,2000,,,Otros,1725393,b
+Salinas Victoria,2000,Ingresos propios,6273504,Gasto corriente,8785101,b
+Salinas Victoria,2000,Ingresos provenientes de transferencias federales,17079726,Inversión,11923748,b
+Salinas Victoria,2000,Ingresos de deuda,104178,Deuda,0,b
+Salinas Victoria,2000,,,Otros,2748559,b
+San Nicolás,2000,Ingresos propios,185788000,Gasto corriente,327189000,a
+San Nicolás,2000,Ingresos provenientes de transferencias federales,305827000,Inversión,73027000,a
+San Nicolás,2000,Ingresos de deuda,52807000,Deuda,21945000,a
+San Nicolás,2000,,,Otros,122261000,a
+Santa Catarina,2000,Ingresos propios,87468618,Gasto corriente,147078042,b
+Santa Catarina,2000,Ingresos provenientes de transferencias federales,139726752,Inversión,66088807,b
+Santa Catarina,2000,Ingresos de deuda,16500000,Deuda,17585549,b
+Santa Catarina,2000,,,Otros,12942972,b
+Santiago,2000,Ingresos propios,25900932,Gasto corriente,38680312,b
+Santiago,2000,Ingresos provenientes de transferencias federales,30710903,Inversión,13274367,b
+Santiago,2000,Ingresos de deuda,1500000,Deuda,400000,b
+Santiago,2000,,,Otros,5757156,b
+Abasolo,2010,Ingresos propios,1529042,Gasto corriente,12015303,b
+Abasolo,2010,Ingresos provenientes de transferencias federales,15020790,Inversión,5798896,b
+Abasolo,2010,Ingresos de deuda,2044720,Deuda,145568,b
+Abasolo,2010,,,Otros,634785,b
+Apodaca,2010,Ingresos propios,295859710,Gasto corriente,402775974,b
+Apodaca,2010,Ingresos provenientes de transferencias federales,528083341,Inversión,546745654,b
+Apodaca,2010,Ingresos de deuda,196181518,Deuda,56956178,b
+Apodaca,2010,,,Otros,13646763,b
+Cadereyta,2010,Ingresos propios,45520779,Gasto corriente,180944830,b
+Cadereyta,2010,Ingresos provenientes de transferencias federales,183401904,Inversión,51361621,b
+Cadereyta,2010,Ingresos de deuda,11932763,Deuda,0,b
+Cadereyta,2010,,,Otros,8548995,b
+El Carmen,2010,Ingresos propios,14037462,Gasto corriente,30383767,b
+El Carmen,2010,Ingresos provenientes de transferencias federales,30547426,Inversión,12166771,b
+El Carmen,2010,Ingresos de deuda,0,Deuda,30260,b
+El Carmen,2010,,,Otros,2004090,b
+Ciénaga de Flores,2010,Ingresos propios,34695590,Gasto corriente,68500703,b
+Ciénaga de Flores,2010,Ingresos provenientes de transferencias federales,37851895,Inversión,19520889,b
+Ciénaga de Flores,2010,Ingresos de deuda,17780827,Deuda,841142,b
+Ciénaga de Flores,2010,,,Otros,1465578,b
+García,2010,Ingresos propios,123109875,Gasto corriente,184310166,b
+García,2010,Ingresos provenientes de transferencias federales,135519248,Inversión,72218072,b
+García,2010,Ingresos de deuda,110935102,Deuda,10640109,b
+García,2010,,,Otros,102395878,b
+San Pedro,2010,Ingresos propios,554958189,Gasto corriente,728886058,a
+San Pedro,2010,Ingresos provenientes de transferencias federales,445064630,Inversión,151121470,a
+San Pedro,2010,Ingresos de deuda,10000000,Deuda,39110105,a
+San Pedro,2010,,,Otros,90905186,a
+General Escobedo,2010,Ingresos propios,200345130,Gasto corriente,369998626,b
+General Escobedo,2010,Ingresos provenientes de transferencias federales,475238328,Inversión,340099656,b
+General Escobedo,2010,Ingresos de deuda,336030000,Deuda,76926039,b
+General Escobedo,2010,,,Otros,224589137,b
+General Zuazua,2010,Ingresos propios,12338495,Gasto corriente,28854603,b
+General Zuazua,2010,Ingresos provenientes de transferencias federales,33164649,Inversión,11036316,b
+General Zuazua,2010,Ingresos de deuda,0,Deuda,32099,b
+General Zuazua,2010,,,Otros,5580126,b
+Guadalupe,2010,Ingresos propios,326595330,Gasto corriente,1002784222,a
+Guadalupe,2010,Ingresos provenientes de transferencias federales,970808517,Inversión,318032052,a
+Guadalupe,2010,Ingresos de deuda,170000000,Deuda,47642374,a
+Guadalupe,2010,,,Otros,98945199,a
+Juárez,2010,Ingresos propios,113610242,Gasto corriente,200974371,b
+Juárez,2010,Ingresos provenientes de transferencias federales,215814561,Inversión,125606452,b
+Juárez,2010,Ingresos de deuda,11399717,Deuda,5881849,b
+Juárez,2010,,,Otros,8361848,b
+Monterrey,2010,Ingresos propios,1275334272,Gasto corriente,2440607339,a
+Monterrey,2010,Ingresos provenientes de transferencias federales,2228701523,Inversión,964623598,a
+Monterrey,2010,Ingresos de deuda,211308787,Deuda,203673105,a
+Monterrey,2010,,,Otros,106440540,a
+Pesquería,2010,Ingresos propios,48059628,Gasto corriente,57666363,b
+Pesquería,2010,Ingresos provenientes de transferencias federales,30353175,Inversión,27389170,b
+Pesquería,2010,Ingresos de deuda,8188892,Deuda,0,b
+Pesquería,2010,,,Otros,1546162,b
+Salinas Victoria,2010,Ingresos propios,32544560,Gasto corriente,64829888,b
+Salinas Victoria,2010,Ingresos provenientes de transferencias federales,64267779,Inversión,39280994,b
+Salinas Victoria,2010,Ingresos de deuda,11711699,Deuda,29452,b
+Salinas Victoria,2010,,,Otros,4383704,b
+San Nicolás,2010,Ingresos propios,345290880,Gasto corriente,738592670,a
+San Nicolás,2010,Ingresos provenientes de transferencias federales,939604612,Inversión,423598120,a
+San Nicolás,2010,Ingresos de deuda,342446000,Deuda,315574239,a
+San Nicolás,2010,,,Otros,149576463,a
+Santa Catarina,2010,Ingresos propios,165773769,Gasto corriente,388691960,b
+Santa Catarina,2010,Ingresos provenientes de transferencias federales,380694738,Inversión,102641403,b
+Santa Catarina,2010,Ingresos de deuda,279367000,Deuda,181676634,b
+Santa Catarina,2010,,,Otros,152825510,b
+Santiago,2010,Ingresos propios,69978519,Gasto corriente,133109777,b
+Santiago,2010,Ingresos provenientes de transferencias federales,87362491,Inversión,32496348,b
+Santiago,2010,Ingresos de deuda,22152360,Deuda,4821387,b
+Santiago,2010,,,Otros,9065858,b
+Abasolo,2015,Ingresos propios,3430263,Gasto corriente,14951304,b
+Abasolo,2015,Ingresos provenientes de transferencias federales,36472139,Inversión,18342768,b
+Abasolo,2015,Ingresos de deuda,0,Deuda,0,b
+Abasolo,2015,,,Otros,6608330,b
+Apodaca,2015,Ingresos propios,173697334,Gasto corriente,1091786573,b
+Apodaca,2015,Ingresos provenientes de transferencias federales,1000070473,Inversión,527446901,b
+Apodaca,2015,Ingresos de deuda,390736549,Deuda,192492419,b
+Apodaca,2015,,,Otros,56474861,b
+Cadereyta,2015,Ingresos propios,89163358,Gasto corriente,128809095,b
+Cadereyta,2015,Ingresos provenientes de transferencias federales,262996783,Inversión,22465500,b
+Cadereyta,2015,Ingresos de deuda,17162346,Deuda,6618856,b
+Cadereyta,2015,,,Otros,211429036,b
+El Carmen,2015,Ingresos propios,32023553,Gasto corriente,46336555,b
+El Carmen,2015,Ingresos provenientes de transferencias federales,35245272,Inversión,13146668,b
+El Carmen,2015,Ingresos de deuda,0,Deuda,27653,b
+El Carmen,2015,,,Otros,7757949,b
+Ciénaga de Flores,2015,Ingresos propios,70435970,Gasto corriente,97799212,b
+Ciénaga de Flores,2015,Ingresos provenientes de transferencias federales,79913988,Inversión,38174171,b
+Ciénaga de Flores,2015,Ingresos de deuda,1000000,Deuda,1877458,b
+Ciénaga de Flores,2015,,,Otros,13499117,b
+García,2015,Ingresos propios,232464141,Gasto corriente,387351227,b
+García,2015,Ingresos provenientes de transferencias federales,384281147,Inversión,128339106,b
+García,2015,Ingresos de deuda,0,Deuda,33681360,b
+García,2015,,,Otros,67373595,b
+San Pedro,2015,Ingresos propios,1317739952,Gasto corriente,1250072356,a
+San Pedro,2015,Ingresos provenientes de transferencias federales,801515839,Inversión,377203378,a
+San Pedro,2015,Ingresos de deuda,75783908,Deuda,198056729,a
+San Pedro,2015,,,Otros,369707236,a
+General Escobedo,2015,Ingresos propios,490349435,Gasto corriente,776169051,b
+General Escobedo,2015,Ingresos provenientes de transferencias federales,688167853,Inversión,244370976,b
+General Escobedo,2015,Ingresos de deuda,0,Deuda,46301755,b
+General Escobedo,2015,,,Otros,111675506,b
+General Zuazua,2015,Ingresos propios,17349384,Gasto corriente,40729406,b
+General Zuazua,2015,Ingresos provenientes de transferencias federales,79345800,Inversión,31897258,b
+General Zuazua,2015,Ingresos de deuda,4834753,Deuda,24670,b
+General Zuazua,2015,,,Otros,28878603,b
+Guadalupe,2015,Ingresos propios,468869005,Gasto corriente,1284314192,a
+Guadalupe,2015,Ingresos provenientes de transferencias federales,1283951273,Inversión,394856660,a
+Guadalupe,2015,Ingresos de deuda,60000000,Deuda,65118835,a
+Guadalupe,2015,,,Otros,68530591,a
+Juárez,2015,Ingresos propios,272010515,Gasto corriente,487367774,b
+Juárez,2015,Ingresos provenientes de transferencias federales,395895260,Inversión,104931893,b
+Juárez,2015,Ingresos de deuda,29220974,Deuda,89030748,b
+Juárez,2015,,,Otros,15797334,b
+Monterrey,2015,Ingresos propios,1878659371,Gasto corriente,3233613770,a
+Monterrey,2015,Ingresos provenientes de transferencias federales,2694251631,Inversión,1222622020,a
+Monterrey,2015,Ingresos de deuda,285354472,Deuda,359671607,a
+Monterrey,2015,,,Otros,42358077,a
+Pesquería,2015,Ingresos propios,74146032,Gasto corriente,83206079,b
+Pesquería,2015,Ingresos provenientes de transferencias federales,57216523,Inversión,31170130,b
+Pesquería,2015,Ingresos de deuda,0,Deuda,2608519,b
+Pesquería,2015,,,Otros,14377827,b
+Salinas Victoria,2015,Ingresos propios,93555613,Gasto corriente,94194785,b
+Salinas Victoria,2015,Ingresos provenientes de transferencias federales,92297056,Inversión,93301222,b
+Salinas Victoria,2015,Ingresos de deuda,13207050,Deuda,2280922,b
+Salinas Victoria,2015,,,Otros,9282790,b
+San Nicolás,2015,Ingresos propios,454170836,Gasto corriente,812809136,a
+San Nicolás,2015,Ingresos provenientes de transferencias federales,1324083793,Inversión,329127000,a
+San Nicolás,2015,Ingresos de deuda,0,Deuda,135267936,a
+San Nicolás,2015,,,Otros,501050557,a
+Santa Catarina,2015,Ingresos propios,261860602,Gasto corriente,563450038,b
+Santa Catarina,2015,Ingresos provenientes de transferencias federales,699931514,Inversión,375184895,b
+Santa Catarina,2015,Ingresos de deuda,124041519,Deuda,108811806,b
+Santa Catarina,2015,,,Otros,38386896,b
+Santiago,2015,Ingresos propios,100853000,Gasto corriente,188599000,b
+Santiago,2015,Ingresos provenientes de transferencias federales,161733000,Inversión,49064000,b
+Santiago,2015,Ingresos de deuda,2000000,Deuda,3632000,b
+Santiago,2015,,,Otros,23291000,b
+Abasolo,2018,Ingresos propios,,Gasto corriente,,b
+Abasolo,2018,Ingresos provenientes de transferencias federales,,Inversión,,b
+Abasolo,2018,Ingresos de deuda,,Deuda,,b
+Abasolo,2018,,,Otros,,b
+Apodaca,2018,Ingresos propios,871012876,Gasto corriente,1308518216,b
+Apodaca,2018,Ingresos provenientes de transferencias federales,1115940421,Inversión,605639062,b
+Apodaca,2018,Ingresos de deuda,26782076,Deuda,8746728,b
+Apodaca,2018,,,Otros,90831367,b
+Cadereyta,2018,Ingresos propios,95897463,Gasto corriente,283768956,b
+Cadereyta,2018,Ingresos provenientes de transferencias federales,301172226,Inversión,74951638,b
+Cadereyta,2018,Ingresos de deuda,301172226,Deuda,147116,b
+Cadereyta,2018,,,Otros,38201979,b
+El Carmen,2018,Ingresos propios,,Gasto corriente,,b
+El Carmen,2018,Ingresos provenientes de transferencias federales,,Inversión,,b
+El Carmen,2018,Ingresos de deuda,,Deuda,,b
+El Carmen,2018,,,Otros,,b
+Ciénaga de Flores,2018,Ingresos propios,,Gasto corriente,,b
+Ciénaga de Flores,2018,Ingresos provenientes de transferencias federales,,Inversión,,b
+Ciénaga de Flores,2018,Ingresos de deuda,,Deuda,,b
+Ciénaga de Flores,2018,,,Otros,,b
+García,2018,Ingresos propios,,Gasto corriente,,b
+García,2018,Ingresos provenientes de transferencias federales,,Inversión,,b
+García,2018,Ingresos de deuda,,Deuda,,b
+García,2018,,,Otros,,b
+San Pedro,2018,Ingresos propios,1583356450,Gasto corriente,1720563309,a
+San Pedro,2018,Ingresos provenientes de transferencias federales,1312593846,Inversión,868213978,a
+San Pedro,2018,Ingresos de deuda,154951911,Deuda,242750184,a
+San Pedro,2018,,,Otros,219374736,a
+General Escobedo,2018,Ingresos propios,347721582,Gasto corriente,947035351,b
+General Escobedo,2018,Ingresos provenientes de transferencias federales,864084331,Inversión,208479016,b
+General Escobedo,2018,Ingresos de deuda,41055956,Deuda,29804496,b
+General Escobedo,2018,,,Otros,67543006,b
+General Zuazua,2018,Ingresos propios,,Gasto corriente,,b
+General Zuazua,2018,Ingresos provenientes de transferencias federales,,Inversión,,b
+General Zuazua,2018,Ingresos de deuda,,Deuda,,b
+General Zuazua,2018,,,Otros,,b
+Guadalupe,2018,Ingresos propios,653250941,Gasto corriente,1708814225,a
+Guadalupe,2018,Ingresos provenientes de transferencias federales,1805378768,Inversión,654962333,a
+Guadalupe,2018,Ingresos de deuda,75184782,Deuda,118481063,a
+Guadalupe,2018,,,Otros,51556870,a
+Juárez,2018,Ingresos propios,163366591,Gasto corriente,690398261,b
+Juárez,2018,Ingresos provenientes de transferencias federales,606095299,Inversión,122550295,b
+Juárez,2018,Ingresos de deuda,81462841,Deuda,28296749,b
+Juárez,2018,,,Otros,9679426,b
+Monterrey,2018,Ingresos propios,2886395879,Gasto corriente,3884712179,a
+Monterrey,2018,Ingresos provenientes de transferencias federales,3466386441,Inversión,1757442917,a
+Monterrey,2018,Ingresos de deuda,35600000,Deuda,252803376,a
+Monterrey,2018,,,Otros,493423848,a
+Pesquería,2018,Ingresos propios,180913650,Gasto corriente,231801948,b
+Pesquería,2018,Ingresos provenientes de transferencias federales,202769929,Inversión,122592415,b
+Pesquería,2018,Ingresos de deuda,,Deuda,0,b
+Pesquería,2018,,,Otros,29289216,b
+Salinas Victoria,2018,Ingresos propios,,Gasto corriente,,b
+Salinas Victoria,2018,Ingresos provenientes de transferencias federales,,Inversión,,b
+Salinas Victoria,2018,Ingresos de deuda,,Deuda,,b
+Salinas Victoria,2018,,,Otros,,b
+San Nicolás,2018,Ingresos propios,637846673,Gasto corriente,1136730994,a
+San Nicolás,2018,Ingresos provenientes de transferencias federales,1358111712,Inversión,500710289,a
+San Nicolás,2018,Ingresos de deuda,204215643,Deuda,125902286,a
+San Nicolás,2018,,,Otros,436830459,a
+Santa Catarina,2018,Ingresos propios,,Gasto corriente,,b
+Santa Catarina,2018,Ingresos provenientes de transferencias federales,,Inversión,,b
+Santa Catarina,2018,Ingresos de deuda,,Deuda,,b
+Santa Catarina,2018,,,Otros,,b
+Santiago,2018,Ingresos propios,191736525,Gasto corriente,283642370,b
+Santiago,2018,Ingresos provenientes de transferencias federales,241986976,Inversión,163058919,b
+Santiago,2018,Ingresos de deuda,38546673,Deuda,2980236,b
+Santiago,2018,,,Otros,22588649,b

@@ -6,5 +6,5 @@ app = dash.Dash(__name__, external_stylesheets=[themes.DARKLY], suppress_callbac
 server = app.server
 server.secret_key = os.environ.get('secret_key', 'secret')
 
-app.title = 'Forma Urbana Zona Metropolitana Mty'
+app.title = 'Función Urbana Zona Metropolitana Mty'
 
