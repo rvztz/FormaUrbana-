@@ -29,7 +29,7 @@ def get_treeingresos(year='2018',hist='a'):
     return tringresos
     
 
-def get_treeegresos(year='2018',hist="a"):
+def get_treeegresos(year='2018',hist='a'):
     tregresos = px.treemap(df_ingeg.query('Year=='+year+' and Hist=="'+hist+'"').dropna(subset=['Monto_egresos', 'Egresos']), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
