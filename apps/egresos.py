@@ -5,12 +5,18 @@ import dash_core_components as dcc
 from dash.dependencies import Output, Input 
 import dash_html_components as html
 import pandas as pd
+import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from app import app
 
 df_ingeg = pd.read_csv('./data/ingeg.csv')
 df_prop = pd.read_csv('./data/propinv.csv')
+df_ingeg['Monto_egresos'].replace('', np.nan, inplace=True)
+df_ingeg['Egresos'].replace('', np.nan, inplace=True)
+df_ingeg['Monto_ingresos'].replace('', np.nan, inplace=True)
+df_ingeg['Ingresos'].replace('', np.nan, inplace=True)
+
 
 municipios = df_prop.Municipio.unique()
 years = df_prop.Year.unique().astype(str)
