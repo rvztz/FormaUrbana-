@@ -24,13 +24,13 @@ def get_bubbles(year='2018', hist='a'):
     return bubble
 
 def get_treeingresos(year='2018',hist='a'):
-    tringresos = px.treemap(df_ingeg.query('Year=='+year+' and Hist=="'+hist+'"').dropna(subset=['Monto_ingresos', 'Ingresos']), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    tringresos = px.treemap(df_ingeg.query('Year=='+year+' and Hist=="'+hist+'"').dropna(how='any', subset=['Monto_ingresos', 'Ingresos']), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
     
 
 def get_treeegresos(year='2018',hist='a'):
-    tregresos = px.treemap(df_ingeg.query('Year=='+year+' and Hist=="'+hist+'"').dropna(subset=['Monto_egresos', 'Egresos']), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    tregresos = px.treemap(df_ingeg.query('Year=='+year+' and Hist=="'+hist+'"').dropna(how='any', subset=['Monto_egresos', 'Egresos']), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
 
