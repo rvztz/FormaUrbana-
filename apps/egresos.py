@@ -20,18 +20,18 @@ color_palette = {'b' :['#16336c' , '#273880' , '#403b8f', '#6a4795' , '#7d508f' 
                  'a'  :['#0f2b4f' , '#7d508f', '#e87e59', '#e9f864']}
 
 def get_bubbles(year='2018', hist='a'):
-    bubble = px.scatter(df_prop.query('Year=='+year).dropna(how='any',subset=['prop_inv','prop_ingresos']), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=75, 
+    bubble = px.scatter(df_prop.query('Year=='+year)[df_ingeg['Hist']==hist].dropna(how='any',subset=['prop_inv','prop_ingresos']), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=75, 
                     labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita en miles de pesos)', 'prop_ingresos': 'Ingresos propios del municipio (per cápita en miles de pesos)'}, color_discrete_sequence=color_palette[hist])
     return bubble
 
-def get_treeingresos(year='2015',hist='a'):
+def get_treeingresos(year='2018',hist='a'):
     tringresos = px.treemap(df_ingeg.query('Year=='+year)[df_ingeg['Hist']==hist].dropna(how='any', subset=['Monto_ingresos', 'Ingresos']), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
     
 
-def get_treeegresos(year='2015',hist='a'):
-    tregresos = px.treemap(df_ingeg.query('Year=='+year)[df_ingeg['Hist']==hist].dropna(how='any', subset=['Monto_egresos']), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+def get_treeegresos(year='2018',hist='a'):
+    tregresos = px.treemap(df_ingeg.query('Year=='+year)[df_ingeg['Hist']==hist], path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
 
@@ -230,7 +230,7 @@ tab_ingresos = html.Div(
                         html.H6('Municipios de reciente incorporación', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "treemap_ingresos2",
-                        figure = get_treeingresos('2015','b'),
+                        figure = get_treeingresos('2018','b'),
                         config = {'displayModeBar':False})]
     )])]
 )
