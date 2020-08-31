@@ -12,11 +12,6 @@ from app import app
 
 df_ingeg = pd.read_csv('./data/ingeg.csv')
 df_prop = pd.read_csv('./data/propinv.csv')
-df_ingeg['Monto_egresos'].replace('', np.nan, inplace=True)
-df_ingeg['Egresos'].replace('', np.nan, inplace=True)
-df_ingeg['Monto_ingresos'].replace('', np.nan, inplace=True)
-df_ingeg['Ingresos'].replace('', np.nan, inplace=True)
-
 
 municipios = df_prop.Municipio.unique()
 years = df_prop.Year.unique().astype(str)
@@ -29,13 +24,13 @@ def get_bubbles(year='2018', hist='a'):
                     labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita en miles de pesos)', 'prop_ingresos': 'Ingresos propios del municipio (per cápita en miles de pesos)'}, color_discrete_sequence=color_palette[hist])
     return bubble
 
-def get_treeingresos(year='2018',hist='a'):
+def get_treeingresos(year='2015',hist='a'):
     tringresos = px.treemap(df_ingeg.query('Year=='+year)[df_ingeg['Hist']==hist].dropna(how='any', subset=['Monto_ingresos', 'Ingresos']), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
     
 
-def get_treeegresos(year='2018',hist='a'):
+def get_treeegresos(year='2015',hist='a'):
     tregresos = px.treemap(df_ingeg.query('Year=='+year)[df_ingeg['Hist']==hist].dropna(how='any', subset=['Monto_egresos']), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
@@ -235,7 +230,7 @@ tab_ingresos = html.Div(
                         html.H6('Municipios de reciente incorporación', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "treemap_ingresos2",
-                        figure = get_treeingresos('2018','b'),
+                        figure = get_treeingresos('2015','b'),
                         config = {'displayModeBar':False})]
     )])]
 )
