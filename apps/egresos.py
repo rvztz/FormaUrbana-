@@ -29,9 +29,9 @@ def get_bubbles(year='2018', hist='a'):
 
 def get_treeingresos(year='2018',hist='a'):
     if hist=='a':
-        tringresos = px.treemap(df_inga.query('Year=='+year), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+        tringresos = px.treemap(df_inga.loc[(df_inga!=0).any(axis=1)].query('Year=='+year), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     elif hist=='b':
-        tringresos = px.treemap(df_ingb.query('Year=='+year), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+        tringresos = px.treemap(df_ingb.loc[(df_ingb!=0).any(axis=1)].query('Year=='+year), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
 
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
@@ -39,9 +39,9 @@ def get_treeingresos(year='2018',hist='a'):
 
 def get_treeegresos(year='2018',hist='a'):
     if hist=='a':
-        tregresos = px.treemap(df_ega.query('Year=='+year), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+        tregresos = px.treemap(df_ega.loc[(df_ega!=0).any(axis=1)].query('Year=='+year), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
     elif hist=='b':
-        tregresos = px.treemap(df_egb.query('Year=='+year), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+        tregresos = px.treemap(df_egb.loc[(df_egb!=0).any(axis=1)].query('Year=='+year), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
 
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
