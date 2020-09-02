@@ -303,7 +303,6 @@ tab_egresos = html.Div(
                         html.H6('Municipios de reciente incorporación', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "treemap_egresos2",
-                        figure = get_treeegresos('2018',"b"),
                         config = {'displayModeBar':False})]
     )])]
 )
