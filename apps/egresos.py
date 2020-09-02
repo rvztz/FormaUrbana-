@@ -29,9 +29,9 @@ def get_bubbles(year='2018', hist='a'):
 
 def get_treeingresos(year='2018',hist='a'):
     if hist=='a':
-        tringresos = px.treemap(df_inga.query('Year=='+year), path=['hist','Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600, labels={'hist':'Municipios históricos ZMM'})
+        tringresos = px.treemap(df_inga.query('Year=='+year), path=['Year','Municipio', 'Ingresos'], values = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600, labels={'hist':'Municipios históricos ZMM'})
     elif hist=='b':
-        tringresos = px.treemap(df_ingb.query('Year=='+year), path=['hist','Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600, labels={'hist':'Municipios de reciente incorporación ZMM'})
+        tringresos = px.treemap(df_ingb.query('Year=='+year), path=['Year','Municipio', 'Ingresos'], values = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600, labels={'hist':'Municipios de reciente incorporación ZMM'})
 
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
@@ -39,9 +39,9 @@ def get_treeingresos(year='2018',hist='a'):
 
 def get_treeegresos(year='2018',hist='a'):
     if hist=='a':
-        tregresos = px.treemap(df_ega.query('Year=='+year), path=['hist','Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600,labels={'hist':'Municipios históricos ZMM'})
+        tregresos = px.treemap(df_ega.query('Year=='+year), path=['Year','Municipio', 'Egresos'], values = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600,labels={'hist':'Municipios históricos ZMM'})
     elif hist=='b':
-        tregresos = px.treemap(df_egb.query('Year=='+year), path=['hist', 'Municipio','Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600,labels={'hist':'Municipios de reciente incorporación ZMM'})
+        tregresos = px.treemap(df_egb.query('Year=='+year), path=['Year', 'Municipio','Egresos'], values = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600,labels={'hist':'Municipios de reciente incorporación ZMM'})
 
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
