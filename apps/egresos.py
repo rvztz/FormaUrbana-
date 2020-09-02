@@ -29,20 +29,22 @@ def get_bubbles(year='2018', hist='a'):
 
 def get_treeingresos(year='2018',hist='a'):
     if hist=='a':
-        tringresos = px.treemap(df_inga.query('Year=='+year), path=['Year','Municipio', 'Ingresos'], values = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600, labels={'hist':'Municipios históricos ZMM'})
+        tringresos = px.treemap(df_inga.query('Year=='+year), path=['Year','Municipio', 'Ingresos'],values = 'Monto_ingresos', color_discrete_sequence=['#0C071E', '#180f3d', '#440f76', '#721f81', '#9e2f7f', '#cd4071', '#f1605d', '#fd9668', '#feca8d', '#fcfdbf'])
     elif hist=='b':
-        tringresos = px.treemap(df_ingb.query('Year=='+year), path=['Year','Municipio', 'Ingresos'], values = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600, labels={'hist':'Municipios de reciente incorporación ZMM'})
+        tringresos = px.treemap(df_ingb.query('Year=='+year), path=['Year','Municipio', 'Ingresos'],values = 'Monto_ingresos', color_discrete_sequence=['#0C071E', '#180f3d', '#440f76', '#721f81', '#9e2f7f', '#cd4071', '#f1605d', '#fd9668', '#feca8d', '#fcfdbf'])
 
+    tringresos.update_layout(height=600, template='plotly_dark', margin={"r":0,"t":0,"l":0,"b":0})
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
     
 
 def get_treeegresos(year='2018',hist='a'):
     if hist=='a':
-        tregresos = px.treemap(df_ega.query('Year=='+year), path=['Year','Municipio', 'Egresos'], values = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600,labels={'hist':'Municipios históricos ZMM'})
+        tregresos = px.treemap(df_ega.query('Year=='+year), path=['Year','Municipio', 'Egresos'], values = 'Monto_egresos', color_discrete_sequence=['#0C071E', '#180f3d', '#440f76', '#721f81', '#9e2f7f', '#cd4071', '#f1605d', '#fd9668', '#feca8d', '#fcfdbf'])
     elif hist=='b':
-        tregresos = px.treemap(df_egb.query('Year=='+year), path=['Year', 'Municipio','Egresos'], values = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600,labels={'hist':'Municipios de reciente incorporación ZMM'})
+        tregresos = px.treemap(df_egb.query('Year=='+year), path=['Year','Municipio','Egresos'], values = 'Monto_egresos',  color_discrete_sequence=['#0C071E', '#180f3d', '#440f76', '#721f81', '#9e2f7f', '#cd4071', '#f1605d', '#fd9668', '#feca8d', '#fcfdbf'])
 
+    tregresos.update_layout(height=600, template='plotly_dark', margin={"r":0,"t":0,"l":0,"b":0})
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
 
@@ -79,7 +81,7 @@ main_options = html.Div(children=[
                 {'label': y, 'value': y}
                 for y in years
             ],
-            value = '2018',
+            value = '2015',
             clearable = False,
             style = {
                 'backgroundColor': '#121212',
@@ -97,7 +99,7 @@ main_options2 = html.Div(children=[
                 {'label': y, 'value': y}
                 for y in years
             ],
-            value = '2018',
+            value = '2015',
             clearable = False,
             style = {
                 'backgroundColor': '#121212',
@@ -116,7 +118,7 @@ main_options3 = html.Div(children=[
                 {'label': y, 'value': y}
                 for y in years
             ],
-            value = '2018',
+            value = '2015',
             clearable = False,
             style = {
                 'backgroundColor': '#121212',
@@ -203,7 +205,7 @@ tab_relacion = html.Div(
                         html.H6('Municipios de reciente incorporación de la ZMM', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "grafica_relacion2",
-                        figure = get_bubbles('2018','b'),
+                        figure = get_bubbles('2015','b'),
                         config = {'displayModeBar':False})]
     )])]
 )
@@ -253,7 +255,7 @@ tab_ingresos = html.Div(
                         html.H6('Municipios de reciente incorporación', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "treemap_ingresos2",
-                        figure = get_treeingresos('2018','b'),
+                        figure = get_treeingresos('2015','b'),
                         config = {'displayModeBar':False})]
     )])]
 )
@@ -303,7 +305,7 @@ tab_egresos = html.Div(
                         html.H6('Municipios de reciente incorporación', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "treemap_egresos2",
-                        figure= get_treeegresos('2018','b'),
+                        figure= get_treeegresos('2015','b'),
                         config = {'displayModeBar':False})]
     )])]
 )
