@@ -27,7 +27,7 @@ def get_bubbles(year='2018', hist='a'):
     bubble = px.scatter(df_prop.query('Year=='+year+'and hist=="'+hist+'"'), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=75, labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita en miles de pesos)', 'prop_ingresos': 'Ingresos propios del municipio (per cápita en miles de pesos)'}, color_discrete_sequence=color_palette[hist])
     return bubble
 
-def get_treeingresos(year='2018',hist='a'):
+def get_treeingresos(year='2015',hist='a'):
     if hist=='a':
         tringresos = px.treemap(df_inga.query('Year=='+year), path=['Year','Municipio', 'Ingresos'],values = 'Monto_ingresos', color_discrete_sequence=['#0C071E', '#180f3d', '#440f76', '#721f81', '#9e2f7f', '#cd4071', '#f1605d', '#fd9668', '#feca8d', '#fcfdbf'])
     elif hist=='b':
@@ -38,7 +38,7 @@ def get_treeingresos(year='2018',hist='a'):
     return tringresos
     
 
-def get_treeegresos(year='2018',hist='a'):
+def get_treeegresos(year='2015',hist='a'):
     if hist=='a':
         tregresos = px.treemap(df_ega.query('Year=='+year), path=['Year','Municipio', 'Egresos'], values = 'Monto_egresos', color_discrete_sequence=['#0C071E', '#180f3d', '#440f76', '#721f81', '#9e2f7f', '#cd4071', '#f1605d', '#fd9668', '#feca8d', '#fcfdbf'])
     elif hist=='b':
