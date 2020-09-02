@@ -9,14 +9,16 @@ import plotly.express as px
 import plotly.graph_objects as go
 from app import app
 
-df_ingeg = pd.read_csv('./data/ingeg.csv')
-df_ingeg.dropna(how='any', subset=['Monto_ingresos', 'Ingresos','Egresos','Monto_egresos'],inplace=True)
-
+df_inga = pd.read_csv('./data/inga.csv')
+df_ingb = pd.read_csv('./data/ingb.csv')
+df_ega = pd.read_csv('./data/ega.csv')
+df_egb = pd.read_csv('./data/egb.csv')
 df_prop = pd.read_csv('./data/propinv.csv')
-df_prop.dropna(how='any',subset=['prop_inv','prop_ingresos'], inplace =True)
 
-municipios = df_prop.Municipio.unique()
-years = df_prop.Year.unique().astype(str)
+years = ['1990', '2000', '2010', '2015', '2018']
+
+municipios = {'Abasolo':'b', 'Apodaca':'b', 'Cadereyta': 'b','Ciénaga de Flores':'b', 'El Carmen':'b', 'García':'b', 'General Escobedo':'b',
+ 'General Zuazua':'b', 'Guadalupe':'a', 'Juárez':'b', 'Monterrey':'a', 'Pesquería':'b', 'Salinas Victoria':'b', 'San Nicolás':'a', 'San Pedro':'a',  'Santa Catarina':'b', 'Santiago':'b'}
 
 color_palette = {'b' :['#16336c' , '#273880' , '#403b8f', '#6a4795' , '#7d508f' , '#8e558a', '#c96971' , '#db6f67' , '#e87e59', '#f7b44a' , '#f5c84e'  , '#eee159', '#e9f864'],
                  'a'  :['#0f2b4f' , '#7d508f', '#e87e59', '#e9f864']}
@@ -26,27 +28,47 @@ def get_bubbles(year='2018', hist='a'):
     return bubble
 
 def get_treeingresos(year='2018',hist='a'):
-    tringresos = px.treemap(df_ingeg.query('Year=='+year+'and hist=="'+hist+'"'), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    if hist=='a':
+        tringresos = px.treemap(df_inga.query('Year=='+year), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    elif hist=='b':
+        tringresos = px.treemap(df_ingb.query('Year=='+year), path=['Municipio', 'Ingresos'], values = 'Monto_ingresos', color = 'Monto_ingresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+
     tringresos.data[0].textinfo = 'label+value+percent parent'
     return tringresos
     
 
 def get_treeegresos(year='2018',hist='a'):
-    tregresos = px.treemap(df_ingeg.query('Year=='+year+'and hist=="'+hist+'"').loc[(df_ingeg!=0).any(axis=1)], path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    if hist=='a':
+        tregresos = px.treemap(df_ega.query('Year=='+year), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+    elif hist=='b':
+        tregresos = px.treemap(df_egb.query('Year=='+year), path=['Municipio', 'Egresos'], values = 'Monto_egresos', color = 'Monto_egresos', color_continuous_scale='magma', template = 'plotly_dark',  height=600)
+
     tregresos.data[0].textinfo = 'label+value+percent parent'
     return tregresos
 
-def get_bars(municipio='Monterrey',mode='i'):
+def get_bars_ing(municipio='Monterrey', hist='a'):
 
-    if mode=='i':
-        bars = px.line(df_ingeg.query('Municipio=="'+municipio+'"').dropna(subset=['Ingresos', 'Monto_ingresos']), x = 'Year', y = 'Monto_ingresos', color = 'Ingresos',template='plotly_dark', color_discrete_sequence=['#6a4795', '#c96971','#f7b44a'], labels={'Monto_ingresos':'Monto de ingresos (mmdp)', 'Year':'Año'})
-    else:
-        bars = px.line(df_ingeg.query('Municipio=="'+municipio+'"').dropna(subset=['Egresos', 'Monto_egresos']), x = 'Year', y = 'Monto_egresos', color = 'Egresos',template='plotly_dark', color_discrete_sequence=['#f38d4c', '#a45c85','#59409a', '#f6a04a'], labels={'Monto_egresos':'Monto de ingresos en (mmdp)', 'Year':'Año'})
+    if hist=='a':
+        barsi = px.line(df_inga.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_ingresos', color = 'Ingresos',template='plotly_dark', color_discrete_sequence=['#6a4795', '#c96971','#f7b44a'], labels={'Monto_ingresos':'Monto de ingresos (mmdp)', 'Year':'Año'})
+    elif hist=='b':
+        barsi = px.line(df_ingb.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_ingresos', color = 'Ingresos',template='plotly_dark', color_discrete_sequence=['#6a4795', '#c96971','#f7b44a'], labels={'Monto_ingresos':'Monto de ingresos (mmdp)', 'Year':'Año'})
 
-    bars.update_traces(mode="markers+lines", hovertemplate=None)
-    bars.update_layout(hovermode="x unified", height=550, legend=dict(
+    barsi.update_traces(mode="markers+lines", hovertemplate=None)
+    barsi.update_layout(hovermode="x unified", height=550, legend=dict(
     orientation= 'h'))
-    return bars
+    return barsi
+
+def get_bars_eg(municipio='Monterrey', hist='a'):
+
+    if hist=='a':
+        barse = px.line(df_ega.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_egresos', color = 'Egresos',template='plotly_dark', color_discrete_sequence=['#f38d4c', '#a45c85','#59409a', '#f6a04a'], labels={'Monto_egresos':'Monto de ingresos en (mmdp)', 'Year':'Año'})
+    elif hist=='b':
+        barse = px.line(df_egb.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_egresos', color = 'Egresos',template='plotly_dark', color_discrete_sequence=['#f38d4c', '#a45c85','#59409a', '#f6a04a'], labels={'Monto_egresos':'Monto de ingresos en (mmdp)', 'Year':'Año'})
+
+    barse.update_traces(mode="markers+lines", hovertemplate=None)
+    barse.update_layout(hovermode="x unified", height=550, legend=dict(
+    orientation= 'h'))
+    return barse
 
 
 main_options = html.Div(children=[
@@ -110,7 +132,7 @@ main_options4 = html.Div(children=[
             id = 'input-municipio',
             options=[
                 {'label': y, 'value': y}
-                for y in municipios
+                for y in municipios.keys()
             ],
             value = 'Monterrey',
             clearable = False,
@@ -167,7 +189,7 @@ tab_relacion = html.Div(
                     md = 6,
                     sm = 12,
                     children = [
-                        html.H6('Municipios históricos', style={'text-align':'center'}),
+                        html.H6('Municipios históricos de la ZMM', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "grafica_relacion1",
                         figure = get_bubbles(),
@@ -178,7 +200,7 @@ tab_relacion = html.Div(
                     md = 6, 
                     sm = 12, 
                     children = [
-                        html.H6('Municipios de reciente incorporación', style={'text-align':'center'}),
+                        html.H6('Municipios de reciente incorporación de la ZMM', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "grafica_relacion2",
                         figure = get_bubbles('2018','b'),
@@ -323,7 +345,7 @@ content_bars = dbc.Card(
                         html.H6('Ingresos', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "bars_ingresos",
-                        figure = get_bars(),
+                        figure = get_bars_ing(),
                         config = {'displayModeBar':False})]
                 ),
                 dbc.Col(
@@ -334,7 +356,7 @@ content_bars = dbc.Card(
                         html.H6('Egresos', style={'text-align':'center'}),
                         dcc.Graph(
                         id = "bars_egresos",
-                        figure = get_bars('Monterrey','e'),
+                        figure = get_bars_eg(),
                         config = {'displayModeBar':False})]
     )])
 
@@ -416,4 +438,4 @@ def select_relacion3(selected_year3):
 
 @app.callback([Output('bars_ingresos','figure'),Output('bars_egresos','figure')], [Input('input-municipio','value')])
 def select_bar(selected_municipio):
-    return get_bars(municipio=selected_municipio, mode='i'), get_bars(municipio=selected_municipio, mode='e')
+    return get_bars_ing(selected_municipio, municipios[selected_municipio]), get_bars_eg(selected_municipio, municipios[selected_municipio])

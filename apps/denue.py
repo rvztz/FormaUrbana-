@@ -16,15 +16,17 @@ radio = json.load(open('./data/MapaGradientes.json'))
 
 
 empleos_content = { 
-    '2010_1' : 'En el año 2010 el comercio fue la principal fuente de empleos en el Área Metropolitana de Monterrey, representando el 35.9% de los empleos totales, siendo la industria el segundo principal empleador con el 23.4% del total. Entre los 3 y 7 kilómetros de distancia del centro se aglomera el 35% de los empleos totales, el comercial representando el 35.6% de ellos. Esta alta concentración de empleos delimita una zona funcional bastante monocéntrica que abarca principalmente las zonas de Valle Oriente, Centro de San Pedro Garza García y el Tecnológico de Monterrey. Es de notar que la concentración de empleos no ocurre en el propio centro histórico de la ciudad, teniendo los primeros dos kilómetros a la redonda de la Macroplaza sólo el 10% de los empleos totales.',
-    '2010_2' : 'Adicionalmente, se puede observar una menor concentración de empleos entre los 11 y 14 kilómetros de distancia, que corresponden a zonas de Guadalupe, San Nicolás de los Garza, Santa Catarina y Cumbres. El 19% de los empleos del área metropolitana se concentran aquí, siendo el comercio el 38.7% y la industria el 25% de los empleos del sector. Esta concentración puede indicar el desarrollo de nuevos centros y marca la tendencia hacia mayor policentrismo en la ciudad. De igual forma existe una leve concentración de empleos entre 31 y 34 kilómetros de distancia, que corresponde a los núcleos de García, Cadereyta Jiménez, Santiago y Salinas Victoria. Aunque estos sectores contienen sólo el 2.3% de los empleos de 2010, se puede observar un incremento a comparación de distancias un poco anteriores.',
-    '2015_1' : 'Al año 2015 se nota un considerable incremento en los empleos del sector de oficinas y servicios dentro del núcleo establecido entre los 3 y 7 kilómetros de distancia, con los trabajos de oficina incluso superando aquellos de industria, ahora cada uno representando el 21.8% y 18.3% respectivamente. En 2010 estos dos juntos representaban el 27.5% del sector e incrementaron a representar el 32% del total de la zona. A los 12, 22 y 33 kilómetros de distancia, correspondiendo principalmente a las zonas de Guadalupe, San Nicolás de los Garza, Santa Catarina, Cumbres, Juárez y García, sucedió otro considerable incremento en empleos, particularmente en los ámbitos comerciales e industriales, con incrementos totales del 11.7%, 66% y 25.2% respectivamente.',
-    '2015_2' : 'Esto marca una tendencia a la consolidación del centro, particularmente en los sectores terciarios, así como el continuo crecimiento de otros núcleos a mayor distancia. La productividad de estos nuevos centros de empleos dependerá de la accesibilidad a ellos por parte de la población y la facilidad de movilidad en la ciudad. Es posible que los viajes entre subnúcleos se vuelvan cada vez más relevantes, sin la necesidad de pasar por el núcleo previamente consolidado. El centro histórico sufrió incluso una pérdida de empleos del 10%.',
-    '2019_1' : 'Al 2019 el centro consolidado entre los 3 y 7 kilómetros de distancia vio un fuerte desarrollo de empleos. Esta zona correspondiente principalmente a San Pedro Garza García y al Tecnológico de Monterrey vio un crecimiento del 11%, sin embargo, ha perdido relevancia en cuanto a concentración de empleos. En este año concentró el 31.8% de los empleos del área metropolitana, a comparación del 35% y 33% que concentraba en el año 2010 y 2015 respectivamente. Al año 2019 se mantienen las tendencias de crecimiento que se observaron en el 2015. Se nota una fuerte consolidación de empleos a 12 kilómetros, coincidiendo con las zonas de Cumbres, Santa Catarina, San Nicolás de los Garza y Guadalupe, con un aumento del 18.5%, correspondiente a más de 12,000 empleos. En el centro previamente consolidado a 6 kilómetros existe de igual forma un fuerte incremento en empleos de comercio y de oficina, habiendo aumentado por 16% y 28% respectivamente a comparación del 2015. La industria cobró mayor importancia entre los 19 y 22 kilómetros del centro, correspondiente a Santa Catarina, Mitras, Juárez, Escobedo y Apodaca. Se vio un incremento del 34% respecto a 2015 y representó el 47% de los empleos totales. La tendencia de empleos muestra un incremento en centros de empleabilidad a lo largo de la zona metropolitana y una disminución en la dependencia del centro histórico de la ciudad.',
-    '2019_2' : 'En el aspecto global del área metropolitana, los empleos totales incrementaron por el 14%, siendo los empleos de oficina el sector con mayor crecimiento, del 20.7% respecto a 2015. La industria y el comercio tuvieron un crecimiento cercano, del 19.7% y 19.6% respectivamente. Sin embargo, el comercio sigue siendo la principal fuente de empleo del área metropolitana, representando el 36% de los empleos totales. La industria representó el 23% y los empleos de oficina y servicios representaron el 15% y 10% respectivamente.',
-    'censo_1': 'En cuanto a población se nota una marcada tendencia entre 2000 y 2016. Los primeros 11 kilómetros de la ciudad han sido despoblados marcadamente, con una pérdida del 12% de la población respecto al año 2000, este sector de la ciudad comprende el centro histórico y se extiende hasta San Pedro Garza García, el inicio de Carretera Nacional, el centro de Guadalupe, el centro de San Nicolás de los Garza y Mitras Centro. Sin embargo, el número de viviendas en este sector incrementó en 11.7%, indicando que, aunque la población está deshabitando la zona, la construcción continúa, probablemente provocando una caída en la densidad de población de la mancha urbana.',
-    'censo_2': 'No obstante, la población total de la ciudad ha incrementado en 22%, pasando de 3,3332,000 habitantes en el año 2000 a 4,062,800 en el 2016. Esto significa que la población se ha ido a las periferias de la ciudad, más allá de los primeros 11 kilómetros, teniendo el kilómetro 15 un aumento de más de 100 mil habitantes. El incremento de población entre los 12 kilómetros y los 40 ha sido del 66%. De igual forma a estas distancias el número de viviendas a incrementado considerablemente, pasando de 340,209 viviendas en el 2000 a 896,873 en el año 2016, es decir, un incremento de más del 160% por ciento. Esto demuestra una mayor demanda habitacional en las periferias de la ciudad. Mientras que en el año 2000 sólo el 43.5% de la población vivía a más de 11 kilómetros del centro histórico, en el 2016 fue el 59.1% quién habitó las periferias del área metropolitana. Este cambio de zonas de habitación significa mayores distancias de traslado al centro de empleos consolidado históricamente. Sin embargo, también suponen nuevas fuentes de empleo en servicios y comercios para satisfacer las necesidades de los nuevos habitantes.'
+    '2010' : ['En el año 2010 el comercio fue la principal fuente de empleos en el Área Metropolitana de Monterrey, representando el 35.9% de los empleos totales, siendo la industria el segundo principal empleador con el 23.4% del total. Entre los 3 y 7 kilómetros de distancia del centro se aglomera el 35% de los empleos totales. Esta alta concentración de empleos delimita una zona funcional bastante monocéntrica que abarca principalmente las zonas de Valle Oriente, Centro de San Pedro Garza García y el Tecnológico de Monterrey.',
+    'Adicionalmente, se puede observar una menor concentración de empleos entre los 11 y 14 kilómetros de distancia, que corresponden a zonas de Guadalupe, San Nicolás de los Garza, Santa Catarina y Cumbres. El 19% de los empleos del área metropolitana se concentran aquí, siendo el comercio el 38.7% y la industria el 25% de los empleos del sector. Esta concentración puede indicar el desarrollo de nuevos centros y marca la tendencia hacia mayor policentrismo en la ciudad.'],
+    '2015' : ['Al año 2015 se nota un considerable incremento en los empleos del sector de oficinas y servicios dentro del núcleo establecido entre los 3 y 7 kilómetros de distancia, con los trabajos de oficina incluso superando aquellos de industria, ahora cada uno representando el 21.8% y 18.3% respectivamente. En 2010 estos dos juntos representaban el 27.5% del sector e incrementaron a representar el 32% del total de la zona. A los 12, 22 y 33 kilómetros de distancia, correspondiendo principalmente a las zonas de Guadalupe, San Nicolás de los Garza, Santa Catarina, Cumbres, Juárez y García, sucedió otro considerable incremento en empleos, particularmente en los ámbitos comerciales e industriales, con incrementos totales del 11.7%, 66% y 25.2% respectivamente.',
+    'Se observa una consolidación de los sectores terciarios en el centro, así como el continuo crecimiento de otros núcleos a mayor distancia. La productividad de estos nuevos centros de empleos dependerá de la accesibilidad a ellos por parte de la población y la facilidad de movilidad en la ciudad. Es posible que los viajes entre subnúcleos se vuelvan cada vez más relevantes, sin la necesidad de pasar por el núcleo previamente consolidado. El centro histórico sufrió una pérdida de empleos del 10%.'],
+    '2019' : ['Al 2019 el centro consolidado entre los 3 y 7 kilómetros de distancia vio un fuerte desarrollo de empleos. Esta zona correspondiente principalmente a San Pedro Garza García y al Tecnológico de Monterrey vio un crecimiento del 11%, sin embargo, ha perdido relevancia en cuanto a concentración de empleos. En este año concentró el 31.8% de los empleos del área metropolitana, a comparación del 35% y 33% que concentraba en el año 2010 y 2015 respectivamente. Se mantienen las tendencias de crecimiento que se observaron en el 2015. Se nota una fuerte consolidación de empleos a 12 kilómetros, coincidiendo con las zonas de Cumbres, Santa Catarina, San Nicolás de los Garza y Guadalupe, con un aumento del 18.5%, correspondiente a más de 12,000 empleos.',
+    'En el centro previamente consolidado a 6 kilómetros existe de igual forma un fuerte incremento en empleos de comercio y de oficina, habiendo aumentado por 16% y 28% respectivamente a comparación del 2015. La industria cobró mayor importancia entre los 19 y 22 kilómetros del centro, correspondiente a Santa Catarina, Mitras, Juárez, Escobedo y Apodaca. En el aspecto global del área metropolitana, los empleos totales incrementaron por el 14%, siendo los empleos de oficina el sector con mayor crecimiento, del 20.7% respecto a 2015. La industria y el comercio tuvieron un crecimiento cercano, del 19.7% y 19.6% respectivamente'],
+    'pob_viv' : ['En cuanto a población se nota una marcada tendencia entre 2000 y 2016. Los primeros 11 kilómetros de la ciudad han sido despoblados marcadamente, con una pérdida del 12% de la población respecto al año 2000, este sector de la ciudad comprende el centro histórico y se extiende hasta San Pedro Garza García, el inicio de Carretera Nacional, el centro de Guadalupe, el centro de San Nicolás de los Garza y Mitras Centro. Sin embargo, el número de viviendas en este sector incrementó en 11.7%, indicando que, aunque la población está deshabitando la zona, la construcción continúa, probablemente provocando una caída en la densidad de población de la mancha urbana.',
+    'No obstante, la población total de la ciudad ha incrementado en 22%, pasando de 3,3332,000 habitantes en el año 2000 a 4,062,800 en el 2016. Esto significa que la población se ha ido a las periferias de la ciudad, más allá de los primeros 11 kilómetros, teniendo el kilómetro 15 un aumento de más de 100 mil habitantes. El incremento de población entre los 12 kilómetros y los 40 ha sido del 66%. De igual forma, hubo un incremento de más del 160% en número de viviendas. Mientras que en el año 2000 sólo el 43.5% de la población vivía a más de 11 kilómetros del centro histórico, en el 2016 fue el 59.1% quién habitó las periferias del área metropolitana.']    
 }
+
+
 
 maps_titles = {
     'dist_cbd': 'Distancia al centro de la ciudad',
@@ -178,6 +180,18 @@ jov_options = dcc.Dropdown(
     }
 )  
 
+denue_content = [
+    html.H3(children =maps_titles['act_econ'], className="card-title", style={'font-weight':'bold'}),
+    html.P(empleos_content['2019'][0],className="card-text", style = {'text-align': 'justify'}, id='grac_1'),
+    html.P(empleos_content['2019'][1], className="card-text", style = {'text-align': 'justify'}, id='grac_2')
+]
+
+censo_content = [
+    html.H3(children =maps_titles['pob_viv'], className="card-title", style={'font-weight':'bold'}),
+    html.P(empleos_content['pob_viv'][0],className="card-text", style = {'text-align': 'justify'}),
+    html.P(empleos_content['pob_viv'][1], className="card-text", style = {'text-align': 'justify'})
+]
+
 
 tab_denue = html.Div(
         children = [
@@ -248,7 +262,7 @@ map_joven = html.Div(
             jov_options,
             dcc.Graph(
                 id = 'map_joven',
-                figure = get_mapa('PPJov2000'),
+                figure = get_mapa('PPJov2016'),
                 config = {
                     'displayModeBar' : False
                 }
@@ -310,13 +324,7 @@ map_card = dbc.Card(
 graph_card = dbc.Card(
     [
         dbc.CardHeader("Empleos y población"),
-        dbc.CardBody(
-            [
-                html.H3(children =maps_titles['act_econ'], className="card-title", style={'font-weight':'bold'}, id='gratitle'),
-                html.P(empleos_content['2019_1'], className="card-text", style = {'text-align': 'justify'}, id='grac_1'),
-                html.P(empleos_content['2019_1'], className="card-text", style = {'text-align': 'justify'}, id='grac_2')
-            ]
-        )
+        dbc.CardBody(id='graph_content')
     ],
 )
 
@@ -379,12 +387,12 @@ layout = html.Div(
 
 ])
 
-@app.callback([Output("content", "children"), Output("gratitle", "children"), Output("grac_1", "children"), Output("grac_2", "children")], [Input("tabs", "active_tab")])
+@app.callback([Output("content", "children"), Output("graph_content", "children")], [Input("tabs", "active_tab")])
 def switch_tab(at):
     if at == "tab-1":
-        return tab_denue, maps_titles['act_econ'], empleos_content['2019_1'], empleos_content['2019_2']
+        return tab_denue, denue_content
     elif at == "tab-2":
-        return tab_censo, maps_titles['pob_viv'], empleos_content['censo_1'], empleos_content['censo_2']
+        return tab_censo, censo_content
     return html.P("Error al cargar!...")
 
 @app.callback([Output("mapcontent", "children"), Output("maptitle", "children"), Output("mapc_1", "children"), Output("mapc_2", "children")], [Input("maptabs", "active_tab")])
@@ -400,9 +408,9 @@ def switch_maptab(at):
     return html.P("Error al cargar!...")
 
 
-@app.callback(Output("grafica_denue", "figure"), [Input("denue-options", "value")])
+@app.callback([Output("grafica_denue", "figure"), Output('grac_1','children'), Output('grac_2','children')], [Input("denue-options", "value")])
 def select_figure(selected_year):
-    return get_denue(selected_year)
+    return get_denue(selected_year), empleos_content[selected_year][0], empleos_content[selected_year][1]
 
 @app.callback(Output('map_pobemp','figure'), [Input('pob-options','value')])
 def select_pob1(selected_cat1):
