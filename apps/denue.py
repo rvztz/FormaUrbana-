@@ -30,19 +30,19 @@ empleos_content = {
 
 maps_titles = {
     'dist_cbd': 'Distancia al centro de la ciudad',
-    'Pop0_16' : 'Diferencia de población/empleo 2016 - 2000',
+    'Pop0_16' : 'Diferencia de población/empleo 2019 - 2000',
     'CUS': 'Coeficiente de uso de suelo (CUS)', 
-    'PPJov2016':'Porcentaje de población menor a quince años',
+    'Densidad16':'Porcentaje de población menor a quince años',
     'act_econ':'Actividades económicas',
     'pob_viv':'Poblacion y vivienda 2016 - 2000'
 }
 
 maps_contents = {
     'dist_cbd' : ['Esta sección realiza una exploración del cambio de la función urbana de monterrey considerando los cambios en la morfología policéntrica de la ciudad ocurridos en los últimos veinte y treinta años. En este análisis, se trazaron círculos concéntricos de 1 kilómetro a partir de la macroplaza hasta los 40 kilómetros de distancia del centro de la ciudad. Los círculos fueron cortados con el tamaño de la mancha urbana actual para generar una serie de métricas que exploran el cambio en la ubicación de viviendas y empleos en el período comprendido entre el 2000 y el 2020.', ''],
-    'Pop0_16':['Esta serie de mapas fueron construidos a partir de información disponible en INEGI. En el caso poblacional, se utilizó la cartografía de manzanas del Censo del año 2000 y del Inventario Nacional de Viviendas del 2016. En el caso del empleo, se utilizó el Directorio Estadístico Nacional de Unidades Económicas (DENUE) del año 2000 y del 2019. Los colores oscuros del mapa de diferencia de población indican las zonas que perdieron población entre el 2000 y el 2016; los colores claros identifican las zonas que aumentaron población.', 
+    'Pop0_16':['Esta serie de mapas fueron construidos a partir de información disponible en INEGI. En el caso poblacional, se utilizó la cartografía de manzanas del Censo del año 2000 y del Inventario Nacional de Viviendas del 2016. En el caso del empleo, se utilizó el Directorio Estadístico Nacional de Unidades Económicas (DENUE) del año 2000 y del 2019. Los colores claros del mapa de diferencia de población indican las zonas que perdieron población entre el 2000 y el 2016; los colores oscuros identifican las zonas que aumentaron población.', 
     'En el caso del empleo, se puede apreciar una pérdida de empleos en el centro de la ciudad y en el periurbano, pero un incremento en los círculos ubicados entre 12 y 19 kilómetros de distancia del centro de la ciudad. Estos mapas muestran que en los últimos quince años ha ocurrido una migración residencial del centro de la ciudad hacia la periferia. Los empleos también han migrado hacia zonas no centrales, consolidando una morfología policéntrica de la ZMM.'],
     'CUS': ['A partir de la información catastral consultada, estimamos el Coeficiente de Utilización del Suelo (CUS) promedio en los círculos concéntricos trazados a partir del centro de la ciudad. Los colores más claros indican una mayor proporción de área construida contra área del terreno. La zona central de la ciudad tiene el CUS más alto, el cual se reduce gradualmente conforme nos movemos del centro hacia la periferia. La excepción son algunas franjas claras ubicadas en García y Juárez, con un CUS muy alto y que corresponden a desarrollos de vivienda social.', ''],
-    'PPJov2016':['Esta serie de mapas identifican los hogares jóvenes a partir de la información de INEGI de los años 1990, 2000, 2010 y del Inventario Nacional de Vivienda del 2016. En los censos nacionales se pregunta por el número de personas por hogar que son menores de 15 años. Dicha variable es un aproximado para identificar la ubicación residencial de aquellos hogares que se formaron en un periodo menor a los últimos 15 años.',
+    'Densidad16':['Esta serie de mapas identifican los hogares jóvenes a partir de la información de INEGI de los años 1990, 2000, 2010 y del Inventario Nacional de Vivienda del 2016. En los censos nacionales se pregunta por el número de personas por hogar que son menores de 15 años. Dicha variable es un aproximado para identificar la ubicación residencial de aquellos hogares que se formaron en un periodo menor a los últimos 15 años.',
     'Observando los mapas de 1990, 2000 y 2016, encontramos que los hogares jóvenes no se ubican en las zonas centrales de la ciudad, sino en zonas consolidadas en la periferia urbana. Esto parece ser un indicador de la incapacidad de regeneración del suelo en la zona central de la ciudad para generar una oferta de vivienda asequible a las necesidades de los nuevos hogares. Pareciera que la oferta de vivienda para los nuevos hogares se concentra recurrentemente (al menos desde 1990) en el limite urbano en su momento.']
 }
 
@@ -52,16 +52,16 @@ def get_denue(year='2019'):
     
     fig_denue = go.Figure()
     
-    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['comercio'],
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['DenCom'],
             name='Comercio', line=dict(color = '#403b8f', width =3)))
 
-    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['industria'],
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['DenInd'],
             name='Industria', line=dict(color = '#a45c85', width =3)))
 
-    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['oficina'],
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['DenOfic'],
             name='Oficina', line=dict(color = '#f38d4c', width =3)))
 
-    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['servicios'],
+    fig_denue.add_trace(go.Scatter(x=df_denue.query('anno=='+year)['dist_cbd'], y=df_denue.query('anno=='+year)['DenServ'],
             name='Servicios', line=dict(color = '#e9f864', width =3)))
 
     fig_denue.update_traces(
@@ -72,7 +72,7 @@ def get_denue(year='2019'):
     fig_denue.update_layout(
     hovermode="x unified", 
     xaxis_title="Distancia a centro de la ciudad (km)",
-    yaxis_title="Número de empleos",
+    yaxis_title="Densidad de empleos por km. cuadrado",
     template= 'plotly_dark',
     height=500
     )
@@ -82,16 +82,16 @@ def get_denue(year='2019'):
 def get_censo():
     fig_censo = go.Figure()
 
-    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2000')['dist_cbd'], y=df_censo.query('year==2000')['viv_cm'],
+    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2000')['dist_cbd'], y=df_censo.query('year==2000')['DenViv'],
                     name='Vivienda 2000', line = dict(color='#7d508f',width=3)))
 
-    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2000')['dist_cbd'], y=df_censo.query('year==2000')['pop_cm'],
+    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2000')['dist_cbd'], y=df_censo.query('year==2000')['DenPop'],
                     name='Población 2000', line = dict(color='#f5c84e',width=3)))
 
-    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2016')['dist_cbd'], y=df_censo.query('year==2016')['viv_cm'],
+    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2016')['dist_cbd'], y=df_censo.query('year==2016')['DenViv'],
                     name='Vivienda 2016', line = dict(color='#a45c85',width=3)))
 
-    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2016')['dist_cbd'], y=df_censo.query('year==2016')['pop_cm'],
+    fig_censo.add_trace(go.Scatter(x=df_censo.query('year==2016')['dist_cbd'], y=df_censo.query('year==2016')['DenPop'],
                     name='Población 2016', line = dict(color='#e9f864',width=3)))
 
     fig_censo.update_traces(
@@ -102,7 +102,7 @@ def get_censo():
     fig_censo.update_layout(
         hovermode='x unified',
         xaxis_title="Distancia a centro de la ciudad (km)",
-        yaxis_title="Número de personas",
+        yaxis_title="Densidad de personas por km. cuadrado",
         template = 'plotly_dark',
         height=500
     )
@@ -165,14 +165,14 @@ suelo_options= dcc.Dropdown(
 
 jov_options = dcc.Dropdown(
     options=[
-        {'label': 'Población menor a quince años - 1990', 'value': 'PPJov90'},
-        {'label': 'Población menor a quince años - 2000', 'value': 'PPJov2000'},
-        {'label': 'Población menor a quince años - 2016', 'value': 'PPJov2016'},
+        {'label': 'Población menor a quince años - 1990', 'value': 'Densidad90'},
+        {'label': 'Población menor a quince años - 2000', 'value': 'Densidad00'},
+        {'label': 'Población menor a quince años - 2016', 'value': 'Densidad16'},
         {'label': 'Cambio de población menor a quince años 2016-1990', 'value': 'CambioPP90'}
 
     ],
     id = "jov-options",
-    value='PPJov2016',
+    value='Densidad16',
     clearable=False,
     style = {
         'backgroundColor': '#121212',
@@ -262,7 +262,7 @@ map_joven = html.Div(
             jov_options,
             dcc.Graph(
                 id = 'map_joven',
-                figure = get_mapa('PPJov2016'),
+                figure = get_mapa('Densidad16'),
                 config = {
                     'displayModeBar' : False
                 }
@@ -404,7 +404,7 @@ def switch_maptab(at):
     elif at == "maptab-3":
         return map_cus, maps_titles['CUS'], maps_contents['CUS'][0], maps_contents['CUS'][1]
     elif at == "maptab-4":
-        return map_joven, maps_titles['PPJov2016'], maps_contents['PPJov2016'][0], maps_contents['PPJov2016'][1]
+        return map_joven, maps_titles['Densidad16'], maps_contents['Densidad16'][0], maps_contents['Densidad16'][1]
     return html.P("Error al cargar!...")
 
 

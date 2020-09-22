@@ -1,61 +1,61 @@
-Municipio,Year,Ingresos,Monto_ingresos,hist
-San Pedro,1990,Ingresos propios,41444176.0,a
-San Pedro,1990,Ingresos provenientes de transferencias federales,29069409.0,a
-San Pedro,1990,Ingresos de deuda,0.0,a
-Guadalupe,1990,Ingresos propios,26367442.0,a
-Guadalupe,1990,Ingresos provenientes de transferencias federales,27346062.0,a
-Guadalupe,1990,Ingresos de deuda,0.0,a
-Monterrey,1990,Ingresos propios,63355027.0,a
-Monterrey,1990,Ingresos provenientes de transferencias federales,99954798.0,a
-Monterrey,1990,Ingresos de deuda,0.0,a
-San Nicolás,1990,Ingresos propios,22353997.0,a
-San Nicolás,1990,Ingresos provenientes de transferencias federales,30360464.0,a
-San Nicolás,1990,Ingresos de deuda,0.0,a
-San Pedro,2000,Ingresos propios,369855135.0,a
-San Pedro,2000,Ingresos provenientes de transferencias federales,160100133.0,a
-San Pedro,2000,Ingresos de deuda,0.0,a
-Guadalupe,2000,Ingresos propios,232463419.0,a
-Guadalupe,2000,Ingresos provenientes de transferencias federales,369061357.0,a
-Guadalupe,2000,Ingresos de deuda,15794090.0,a
-Monterrey,2000,Ingresos propios,776403000.0,a
-Monterrey,2000,Ingresos provenientes de transferencias federales,846020000.0,a
-Monterrey,2000,Ingresos de deuda,90200000.0,a
-San Nicolás,2000,Ingresos propios,185788000.0,a
-San Nicolás,2000,Ingresos provenientes de transferencias federales,305827000.0,a
-San Nicolás,2000,Ingresos de deuda,52807000.0,a
-San Pedro,2010,Ingresos propios,554958189.0,a
-San Pedro,2010,Ingresos provenientes de transferencias federales,445064630.0,a
-San Pedro,2010,Ingresos de deuda,10000000.0,a
-Guadalupe,2010,Ingresos propios,326595330.0,a
-Guadalupe,2010,Ingresos provenientes de transferencias federales,970808517.0,a
-Guadalupe,2010,Ingresos de deuda,170000000.0,a
-Monterrey,2010,Ingresos propios,1275334272.0,a
-Monterrey,2010,Ingresos provenientes de transferencias federales,2228701523.0,a
-Monterrey,2010,Ingresos de deuda,211308787.0,a
-San Nicolás,2010,Ingresos propios,345290880.0,a
-San Nicolás,2010,Ingresos provenientes de transferencias federales,939604612.0,a
-San Nicolás,2010,Ingresos de deuda,342446000.0,a
-San Pedro,2015,Ingresos propios,1317739952.0,a
-San Pedro,2015,Ingresos provenientes de transferencias federales,801515839.0,a
-San Pedro,2015,Ingresos de deuda,75783908.0,a
-Guadalupe,2015,Ingresos propios,468869005.0,a
-Guadalupe,2015,Ingresos provenientes de transferencias federales,1283951273.0,a
-Guadalupe,2015,Ingresos de deuda,60000000.0,a
-Monterrey,2015,Ingresos propios,1878659371.0,a
-Monterrey,2015,Ingresos provenientes de transferencias federales,2694251631.0,a
-Monterrey,2015,Ingresos de deuda,285354472.0,a
-San Nicolás,2015,Ingresos propios,454170836.0,a
-San Nicolás,2015,Ingresos provenientes de transferencias federales,1324083793.0,a
-San Nicolás,2015,Ingresos de deuda,0.0,a
-San Pedro,2018,Ingresos propios,1583356450.0,a
-San Pedro,2018,Ingresos provenientes de transferencias federales,1312593846.0,a
-San Pedro,2018,Ingresos de deuda,154951911.0,a
-Guadalupe,2018,Ingresos propios,653250941.0,a
-Guadalupe,2018,Ingresos provenientes de transferencias federales,1805378768.0,a
-Guadalupe,2018,Ingresos de deuda,75184782.0,a
-Monterrey,2018,Ingresos propios,2886395879.0,a
-Monterrey,2018,Ingresos provenientes de transferencias federales,3466386441.0,a
-Monterrey,2018,Ingresos de deuda,35600000.0,a
-San Nicolás,2018,Ingresos propios,637846673.0,a
-San Nicolás,2018,Ingresos provenientes de transferencias federales,1358111712.0,a
-San Nicolás,2018,Ingresos de deuda,204215643.0,a
+Municipio,Year,Ingresos,Monto_ingresos,Pob,prop_ingr
+San Pedro,1990,Ingresos propios,41444176,113040,366.6328379
+San Pedro,1990,Ingresos provenientes de transferencias federales,29069409,113040,257.1603769
+San Pedro,1990,Ingresos de deuda,0,113040,0
+Guadalupe,1990,Ingresos propios,26367442,535560,49.23340429
+Guadalupe,1990,Ingresos provenientes de transferencias federales,27346062,535560,51.06068788
+Guadalupe,1990,Ingresos de deuda,0,535560,0
+Monterrey,1990,Ingresos propios,63355027,1069238,59.25250225
+Monterrey,1990,Ingresos provenientes de transferencias federales,99954798,1069238,93.48227242
+Monterrey,1990,Ingresos de deuda,0,1069238,0
+San Nicolás,1990,Ingresos propios,22353997,436603,51.19982455
+San Nicolás,1990,Ingresos provenientes de transferencias federales,30360464,436603,69.53791889
+San Nicolás,1990,Ingresos de deuda,0,436603,0
+San Pedro,2000,Ingresos propios,369855135,125978,2935.870827
+San Pedro,2000,Ingresos provenientes de transferencias federales,160100133,125978,1270.857872
+San Pedro,2000,Ingresos de deuda,0,125978,0
+Guadalupe,2000,Ingresos propios,232463419,670162,346.8764552
+Guadalupe,2000,Ingresos provenientes de transferencias federales,369061357,670162,550.7046908
+Guadalupe,2000,Ingresos de deuda,15794090,670162,23.56757023
+Monterrey,2000,Ingresos propios,776403000,1110997,698.8344703
+Monterrey,2000,Ingresos provenientes de transferencias federales,846020000,1110997,761.4962057
+Monterrey,2000,Ingresos de deuda,90200000,1110997,81.18833804
+San Nicolás,2000,Ingresos propios,185788000,496878,373.9106984
+San Nicolás,2000,Ingresos provenientes de transferencias federales,305827000,496878,615.4971643
+San Nicolás,2000,Ingresos de deuda,52807000,496878,106.2775973
+San Pedro,2010,Ingresos propios,554958189,122659,4524.398446
+San Pedro,2010,Ingresos provenientes de transferencias federales,445064630,122659,3628.471046
+San Pedro,2010,Ingresos de deuda,10000000,122659,81.52683456
+Guadalupe,2010,Ingresos propios,326595330,678006,481.6997637
+Guadalupe,2010,Ingresos provenientes de transferencias federales,970808517,678006,1431.858298
+Guadalupe,2010,Ingresos de deuda,170000000,678006,250.7352442
+Monterrey,2010,Ingresos propios,1275334272,1135550,1123.098298
+Monterrey,2010,Ingresos provenientes de transferencias federales,2228701523,1135550,1962.662607
+Monterrey,2010,Ingresos de deuda,211308787,1135550,186.0849694
+San Nicolás,2010,Ingresos propios,345290880,443273,778.9576175
+San Nicolás,2010,Ingresos provenientes de transferencias federales,939604612,443273,2119.697369
+San Nicolás,2010,Ingresos de deuda,342446000,443273,772.5397216
+San Pedro,2015,Ingresos propios,1317739952,123156,10699.76251
+San Pedro,2015,Ingresos provenientes de transferencias federales,801515839,123156,6508.134715
+San Pedro,2015,Ingresos de deuda,75783908,123156,615.3488908
+Guadalupe,2015,Ingresos propios,468869005,682880,686.6052674
+Guadalupe,2015,Ingresos provenientes de transferencias federales,1283951273,682880,1880.200435
+Guadalupe,2015,Ingresos de deuda,60000000,682880,87.86316776
+Monterrey,2015,Ingresos propios,1878659371,1109171,1693.750892
+Monterrey,2015,Ingresos provenientes de transferencias federales,2694251631,1109171,2429.067863
+Monterrey,2015,Ingresos de deuda,285354472,1109171,257.2682409
+San Nicolás,2015,Ingresos propios,454170836,430143,1055.860112
+San Nicolás,2015,Ingresos provenientes de transferencias federales,1324083793,430143,3078.240941
+San Nicolás,2015,Ingresos de deuda,0,430143,0
+San Pedro,2018,Ingresos propios,1583356450,135509,11684.51136
+San Pedro,2018,Ingresos provenientes de transferencias federales,1312593846,135509,9686.396077
+San Pedro,2018,Ingresos de deuda,154951911,135509,1143.480588
+Guadalupe,2018,Ingresos propios,653250941,702812,929.481769
+Guadalupe,2018,Ingresos provenientes de transferencias federales,1805378768,702812,2568.793316
+Guadalupe,2018,Ingresos de deuda,75184782,702812,106.9770892
+Monterrey,2018,Ingresos propios,2886395879,1106817,2607.83479
+Monterrey,2018,Ingresos provenientes de transferencias federales,3466386441,1106817,3131.851463
+Monterrey,2018,Ingresos de deuda,35600000,1106817,32.16430539
+San Nicolás,2018,Ingresos propios,637846673,473337,1347.552955
+San Nicolás,2018,Ingresos provenientes de transferencias federales,1358111712,473337,2869.227869
+San Nicolás,2018,Ingresos de deuda,204215643,473337,431.4381572

@@ -24,7 +24,7 @@ color_palette = {'b' :['#16336c' , '#273880' , '#403b8f', '#6a4795' , '#7d508f' 
                  'a'  :['#0f2b4f' , '#7d508f', '#e87e59', '#e9f864']}
 
 def get_bubbles(year='2018', hist='a'):
-    bubble = px.scatter(df_prop.query('Year=='+year+'and hist=="'+hist+'"'), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=75, labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita en miles de pesos)', 'prop_ingresos': 'Ingresos propios del municipio (per cápita en miles de pesos)'}, color_discrete_sequence=color_palette[hist])
+    bubble = px.scatter(df_prop.query('Year=='+year+'and hist=="'+hist+'"'), x = 'prop_inv', y='prop_ingresos', size='Pob', color = 'Municipio', hover_name='Municipio', template = 'plotly_dark',height=500,size_max=75, labels = {'prop_inv': 'Gasto en inversión del municipio (per cápita)', 'prop_ingresos': 'Ingresos propios del municipio (per cápita)'}, color_discrete_sequence=color_palette[hist])
     return bubble
 
 def get_treeingresos(year='2015',hist='a'):
@@ -51,9 +51,9 @@ def get_treeegresos(year='2015',hist='a'):
 def get_bars_ing(municipio='Monterrey', hist='a'):
 
     if hist=='a':
-        barsi = px.line(df_inga.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_ingresos', color = 'Ingresos',template='plotly_dark', color_discrete_sequence=['#6a4795', '#c96971','#f7b44a'], labels={'Monto_ingresos':'Monto de ingresos (mmdp)', 'Year':'Año'})
+        barsi = px.line(df_inga.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'prop_ingr', color = 'Ingresos',template='plotly_dark', color_discrete_sequence=['#6a4795', '#c96971','#f7b44a'], labels={'prop_ingr':'Monto ingresos per cápita', 'Year':'Año'})
     elif hist=='b':
-        barsi = px.line(df_ingb.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_ingresos', color = 'Ingresos',template='plotly_dark', color_discrete_sequence=['#6a4795', '#c96971','#f7b44a'], labels={'Monto_ingresos':'Monto de ingresos (mmdp)', 'Year':'Año'})
+        barsi = px.line(df_ingb.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'prop_ingr', color = 'Ingresos',template='plotly_dark', color_discrete_sequence=['#6a4795', '#c96971','#f7b44a'], labels={'prop_ingr':'Monto ingresos  per cápita', 'Year':'Año'})
 
     barsi.update_traces(mode="markers+lines", hovertemplate=None)
     barsi.update_layout(hovermode="x unified", height=550, legend=dict(
@@ -63,9 +63,9 @@ def get_bars_ing(municipio='Monterrey', hist='a'):
 def get_bars_eg(municipio='Monterrey', hist='a'):
 
     if hist=='a':
-        barse = px.line(df_ega.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_egresos', color = 'Egresos',template='plotly_dark', color_discrete_sequence=['#f38d4c', '#a45c85','#59409a', '#f6a04a'], labels={'Monto_egresos':'Monto de egresos en (mmdp)', 'Year':'Año'})
+        barse = px.line(df_ega.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'prop_egr', color = 'Egresos',template='plotly_dark', color_discrete_sequence=['#f38d4c', '#a45c85','#59409a', '#f6a04a'], labels={'prop_egr':'Monto egresos  per cápita', 'Year':'Año'})
     elif hist=='b':
-        barse = px.line(df_egb.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'Monto_egresos', color = 'Egresos',template='plotly_dark', color_discrete_sequence=['#f38d4c', '#a45c85','#59409a', '#f6a04a'], labels={'Monto_egresos':'Monto de egresos en (mmdp)', 'Year':'Año'})
+        barse = px.line(df_egb.query('Municipio=="'+municipio+'"'), x = 'Year', y = 'prop_egr', color = 'Egresos',template='plotly_dark', color_discrete_sequence=['#f38d4c', '#a45c85','#59409a', '#f6a04a'], labels={'prop_egr':'Monto egresos  per cápita', 'Year':'Año'})
 
     barse.update_traces(mode="markers+lines", hovertemplate=None)
     barse.update_layout(hovermode="x unified", height=550, legend=dict(
